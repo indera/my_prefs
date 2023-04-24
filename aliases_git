@@ -1,0 +1,30 @@
+########################################
+############# Git stuff #################
+alias gco='git checkout'
+alias gst=' git status'
+alias glog='git log --color --graph'
+
+alias gd='git diff'
+alias gdd='git diff --cached'
+alias gb='git branch'
+alias gp='git remote -v'
+alias gf='git show --name-status'
+alias gan='git blame'
+
+alias gtop='git shortlog -s -n'
+alias glast='git diff HEAD^..HEAD'
+alias glastf='git diff-tree --no-commit-id --name-only -r HEAD'
+
+alias gcd=' git checkout develop'
+alias gcm=' git checkout master'
+alias git_check_merged='git branch -r --merged'
+alias git_prune='git remote prune origin'
+
+
+alias gpu='git pull --rebase'
+alias gprune='git fetch --all --prune'
+alias grevert_prev='git reset --soft HEAD~1'
+alias gin_origin='git fetch && git log ..origin/develop'
+alias gin_upstream='git fetch && git log ..upstream/develop'
+alias gout_origin='git fetch && git log origin/develop..'
+

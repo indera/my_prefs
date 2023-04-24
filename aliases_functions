@@ -1,0 +1,91 @@
+
+function mdfind() {
+    /usr/bin/mdfind $@ 2> >(grep --invert-match ' \[UserQueryParser\] ' >&2)
+}
+
+
+function pl() {
+    # print line
+    # Print: line range sed -n '2,4 p' file
+    awk "FNR==$1" $2
+}
+
+# find common lines file_1 file_2
+function common_lines() {
+    grep -F -x -f $1 $2
+}
+
+function topc() {
+    # show most used commands
+    # history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n10
+    history | cut -d ' ' -f5 | sort | uniq -c | sort -nr | head -40
+}
+
+
+
+function ssl_enddate() {
+    openssl x509 -enddate -noout -in $1
+}
+
+function glo() {
+    git log --decorate --stat --graph --pretty=format:"%d %Cgreen%h%Creset (%ar - %Cred%an%Creset), %s%n"
+}
+
+create_exe () {
+    echo "#!/bin/sh" > $1;
+    echo "echo 'Running $1'" >> $1;
+    chmod +x $1;
+    cat $1
+}
+
+
+function plott() {
+    # http://linux.byexamples.com/archives/474/bash-script-that-process-input-from-pipeline-or-file-redirection/
+    # if [ -e $1 ]; then read str; else str=$1;fi
+    FILE="$1"
+    less $FILE | ~/git/data_hacks/data_hacks/bar_chart.py
+}
+
+
+function show() {
+   # credits: http://stackoverflow.com/questions/402377/using-getopts-in-bash-shell-script-to-get-long-and-short-command-line-options
+   list=''
+   status_only=no
+   show_help=no
+
+   set -- $(getopt fh "$@")
+   while [ $# -gt 0 ]
+      do
+   case "$1" in
+         (-f) status_only=yes;;
+         (-h) show_help=yes;;
+         (-c) list="$list $2"; shift;;
+         (--) shift; break;;
+         (-*) echo "$0: error - unrecognized option $1" 1>&2; exit 1;;
+         (*)  break;;
+         esac
+         shift
+   done
+
+   if [[ $# -lt 1 ]] || [[ "yes" == "$show_help" ]] ; then
+      echo 'Usage: '
+      echo '   show [-f file status only] [-h help] commit_index'
+      return
+   fi
+
+   # validate the index
+   re='^[0-9]+$'
+   if ! [[ "$1" =~ $re ]]; then
+      echo "The commit index must be an integer " >&2
+      return
+   fi
+
+   if [[ "yes" == "$status_only" ]]; then
+      git log --format='%H' -"$1" | tail -1 | xargs git show --name-status
+      #git log --pretty=oneline  | nl | grep " $1\t"  |  cut  -f2 | cut -d ' ' -f1 | xargs git show --name-status
+   else
+      git log --format='%H' -"$1" | tail -1 | xargs git show --color
+   fi
+}
+
+

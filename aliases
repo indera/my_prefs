@@ -1,0 +1,49 @@
+
+
+alias ls='ls -hp --color=auto'
+alias lsa='ls -al'
+alias lss='ls -altr'
+alias dua='du -hcs'
+alias watch='watch '
+
+alias ali='    	vim ~/aliases'
+alias alif='    vim ~/aliases_functions'
+alias alig='  	vim ~/aliases_git'
+alias alik=' 	vim ~/aliases_kube'
+
+alias ali_git='  vim ~/aliases_git'
+alias ali_kube=' vim ~/aliases_kube'
+
+alias refresh='source ~/.zshrc'
+alias refresh2='source ~/.bashrc'
+alias bi='brew install'
+alias re='vim README.md'
+alias pa='vim package.json'
+alias ma='vim Makefile'
+alias en='vim .env'
+
+
+alias vim='nvim'
+# alias vim=/usr/bin/vim
+alias vrc='vim ~/.vimrc'
+
+
+alias ba='vim ~/.bashrc'
+alias za='vim ~/.zshrc'
+
+alias fin='find . -iname'
+
+alias bigg='du -hcs * | grep -E "M|G"'
+alias big_find='find ./ -size +10000k  | xargs ls -hsS'
+alias big='ls -phsS | head -10'
+
+
+alias cdd="cd ..    	&& pwd"
+alias cdg='cd ~/git 	&& lss'
+
+
+alias se='vim ~/setup'
+
+alias python='python3'
+
+alias net='sudo bmon'
