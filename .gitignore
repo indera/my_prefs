@@ -7,5 +7,5 @@
 
 
 !/.config
-
+!/.hammerspoon/*
 !.gitignore
