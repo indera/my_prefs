@@ -1,48 +1,49 @@
-
+# =========================
+# --- Essentials ---
 alias ls='ls -hp --color=auto'
-alias lsa='ls -al'
-alias lss='ls -altr'
+alias lsa='ls -lA'
+alias lss='ls -lAtr'
 alias dua='du -hcs'
-alias watch='watch '
+alias cdd="cd ..    		&& pwd"
+alias cdg='cd ~/git 		&& lss'
+alias cdm='cd ~/git/my_prefs 	&& lss'
 
+# alias vim=/usr/bin/vim
+alias vim='nvim'
+alias watch='watch '
+# alias python='python3'
+
+# =========================
+# --- Super powers :) ---
 alias ali='    	vim ~/aliases'
 alias alif='    vim ~/aliases_functions'
 alias alig='  	vim ~/aliases_git'
 alias alik=' 	vim ~/aliases_kube'
-
-alias ali_git='  vim ~/aliases_git'
-alias ali_kube=' vim ~/aliases_kube'
+alias alid=' 	vim ~/aliases_db'
 
 alias refresh='source ~/.zshrc'
 alias refresh2='source ~/.bashrc'
+
 alias bi='brew install'
 alias re='vim README.md'
 alias pa='vim package.json'
 alias ma='vim Makefile'
 alias en='vim .env'
+alias dok='vim Dockerfile'
+alias doc='vim docker-compose.yml'
 
-
-alias vim='nvim'
-# alias vim=/usr/bin/vim
 alias vrc='vim ~/.vimrc'
-
-
 alias ba='vim ~/.bashrc'
 alias za='vim ~/.zshrc'
 
 alias fin='find . -iname'
-
 alias bigg='du -hcs * | grep -E "M|G"'
 alias big_find='find ./ -size +10000k  | xargs ls -hsS'
 alias big='ls -phsS | head -10'
 
-
-alias cdd="cd ..    	&& pwd"
-alias cdg='cd ~/git 	&& lss'
-
-
-alias se='vim ~/setup'
-
-alias python='python3'
-
+# https://linuxize.com/post/check-listening-ports-linux/
+alias ports='sudo lsof -nP -iTCP -sTCP:LISTEN'
+alias proce='top -stats pid,command,cpu,idlew,power -o power -d'
 alias net='sudo bmon'
+
+alias se='vim ~/git/setup/README.md'
