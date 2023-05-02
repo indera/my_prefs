@@ -1,0 +1,24 @@
+
+alias k="kubectl "
+alias kx="kubectl --context=x"
+
+alias kc="kubectl config use-context"
+alias ksys="kubectl --namespace=kube-system"
+alias kcd="kubectl config use-context"
+alias kcdn='kubectl config set-context --current --namespace '
+alias kls='k config get-contexts -o name | egrep --color=always "$(k config current-context)|^"'
+alias kpwd='k config get-contexts $(k config current-context)'
+alias kall='kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n'
+
+# https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-instances.html#listing-instances
+# 
+# instances that have the tag Name=MyInstance.
+# aws ec2 describe-instances --filters "Name=tag:Name,Values=MyInstance"
+#
+# instances that were launched using any of the following AMIs: ami-x0123456, ami-y0123456, and ami-z0123456
+# aws ec2 describe-instances --filters "Name=image-id,Values=ami-x0123456,ami-y0123456,ami-z0123456"
+
+alias alist="aws ec2 describe-instances"
+alias glist="gcloud compute instances list"
+
+
