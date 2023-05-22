@@ -12,6 +12,7 @@ alias cdm='cd ~/git/my_prefs 	&& lss'
 alias vim='nvim'
 alias watch='watch '
 # alias python='python3'
+alias rv='rbenv versions'
 
 # =========================
 # --- Super powers :) ---
@@ -19,7 +20,8 @@ alias ali='    	vim ~/aliases'
 alias alif='    vim ~/aliases_functions'
 alias alig='  	vim ~/aliases_git'
 alias alik=' 	vim ~/aliases_kube'
-alias alid=' 	vim ~/aliases_db'
+alias alid=' 	vim ~/aliases_docker'
+alias alidb=' 	vim ~/aliases_db'
 
 alias refresh='source ~/.zshrc'
 alias refresh2='source ~/.bashrc'
@@ -30,6 +32,7 @@ alias pa='vim package.json'
 alias ma='vim Makefile'
 alias en='vim .env'
 alias dok='vim Dockerfile'
+alias ge='vim Gemfile'
 alias doc='vim docker-compose.yml'
 
 alias vrc='vim ~/.vimrc'
@@ -47,3 +50,4 @@ alias proce='top -stats pid,command,cpu,idlew,power -o power -d'
 alias net='sudo bmon'
 
 alias se='vim ~/git/setup/README.md'
+alias ste='vim steps.md'

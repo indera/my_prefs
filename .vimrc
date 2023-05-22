@@ -62,12 +62,12 @@ call plug#end()
 " let g:deoplete#enable_at_startup = 1
 
 " select the color scheme
-" wget https://raw.githubusercontent.com/indera/molokai/master/colors/molokai.vim -o ~/.config/nvim/colors/molokai.vim
-" wget https://raw.githubusercontent.com/sickill/vim-monokai/master/colors/monokai.vim -o ~/.config/nvim/colors/monokai.vim
+" wget https://raw.githubusercontent.com/indera/molokai/master/colors/molokai.vim -P ~/.config/nvim/colors/
+" wget https://raw.githubusercontent.com/sickill/vim-monokai/master/colors/monokai.vim -P ~/.config/nvim/colors/
 try
-    colorscheme molokai
+    " colorscheme molokai
     " colorscheme gruvbox
-    " colorscheme monokai
+    colorscheme monokai
 
     " https://github.com/numToStr/Comment.nvim
     lua require('Comment').setup()
