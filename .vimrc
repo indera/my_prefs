@@ -9,8 +9,27 @@ call plug#begin('~/.config/nvim/plugged')
 " https://github.com/morhetz/gruvbox
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
+" Plug 'dinhhuy258/git.nvim' " lua clone
+
 Plug 'preservim/nerdtree'
-Plug 'kien/ctrlp.vim'
+
+" https://sourcediving.com/better-fuzzy-finding-in-vim-2f1e8597b3b9
+" Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf'
+"https://github.com/junegunn/fzf.vim 
+" Example
+"   :Rg [PATTERN]	rg search result (ALT-A to select all, ALT-D to deselect all)
+" Plug 'junegunn/fzf.vim'
+
+" plantUML
+Plug 'aklt/plantuml-syntax'
+Plug 'weirongxu/plantuml-previewer.vim'
+Plug 'tyru/open-browser.vim'
+
+
+" show diffs inline
+" Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 
 " Lang support
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -57,20 +76,29 @@ Plug 'Shougo/neosnippet-snippets'
 " :CocInstall coc-json coc-tsserver
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" code to image file
+" Plug 'krivahtoo/silicon.nvim', { 'do': './install.sh' }
+
 call plug#end()
 
-" let g:deoplete#enable_at_startup = 1
+" https://medium.com/@ericclifford/neovim-item2-truecolor-awesome-70b975516849
+" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+" pip3 install --user pynvim
+let g:deoplete#enable_at_startup = 1
 
 " select the color scheme
 " wget https://raw.githubusercontent.com/indera/molokai/master/colors/molokai.vim -P ~/.config/nvim/colors/
 " wget https://raw.githubusercontent.com/sickill/vim-monokai/master/colors/monokai.vim -P ~/.config/nvim/colors/
 try
-    " colorscheme molokai
     " colorscheme gruvbox
+    " colorscheme molokai
     colorscheme monokai
 
     " https://github.com/numToStr/Comment.nvim
     lua require('Comment').setup()
+    " lua require('git').setup()
+    "
 catch
 endtry
 
@@ -82,25 +110,43 @@ endtry
 " let g:AutoPairsFlyMode = 1
 " let g:AutoPairsShortcutBackInsert = '<M-b>'
 
-set nu
-set laststatus=2
+set noerrorbells                " No beeps
+set nu                          " Line numbers
+set backspace=indent,eol,start  " Makes backspace key more powerful.
+" set showcmd                     " Show me what I'm typing
 
 set noswapfile
+set nobackup					" Don't create annoying backup files
+set nowritebackup
 set undofile
 set undodir=$HOME/.vim/undo
 
 set encoding=utf-8
+" set noshowmode                " We show the mode with airline or lightline
+set nowrapscan
+set wrap                        " wrap long lines
 set incsearch
 set hlsearch
-set nowrapscan
-set ignorecase 
+set ignorecase                  " Search case insensitive...
+set smartcase                   " ... but not when search pattern contains upper case characters
+
+set ttyfast
+" set ttyscroll=3               " noop on linux ?
+set lazyredraw          	    "Don't redraw while executing macros (good performance config)
+
+" speed up syntax highlighting
+set nocursorcolumn
+set nocursorline
 
 filetype plugin indent on
 " set mouse=a
 set mouse-=a
 
+" Apply the indentation of the current line to the next line.
 set autoindent
 set smartindent
+set complete-=i " if your program has lots of system includes and the completion results become polluted you can get rid of i
+set smarttab
 
 set expandtab
 set expandtab " Expand Tabs (pressing Tab inserts spaces)
@@ -118,27 +164,27 @@ autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4 te
 
 
 " set clipboard+=unnamedplus
-set showmode 
-"set smartindent
 set splitbelow
 set splitright
 set showmatch " Blink back to closing bracket (using % key)
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
-"Don't redraw while executing macros (good performance config)
-set lazyredraw
 " For regular expressions turn magic on
 set magic
 
+" nmap <F1> :echo<CR>
+" imap <F1> <C-o>:echo<CR>
 
-nmap <F1> :echo<CR>
-imap <F1> <C-o>:echo<CR>
+" Center the screen
+nnoremap <F1> zz
 
 nnoremap <F2> ddkPk<CR>
 nnoremap <F3> ddjPk<CR>
 nnoremap <F6> :set number! <CR>
 " nnoremap <F7> :TlistToggle <CR>
+
+nnoremap <F7> :set signcolumn=no<CR>
 
 " https://vim.fandom.com/wiki/Alternative_tab_navigation
 " https://vi.stackexchange.com/questions/31340/navigate-between-current-and-previous-tab-or-split
@@ -159,14 +205,22 @@ autocmd filetype python nnoremap <F4> :w <bar> exec '!python3 '.shellescape('%')
 autocmd filetype python nnoremap <F5> :w <bar> exec '!python3  -m unittest '.shellescape('%')<CR>
 autocmd filetype python nnoremap <F8> :w <bar> exec '!pylint '.shellescape('%')<CR>
 
+" This comes first, because we have mappings that depend on leader
+" With a map leader it's possible to do extra key combinations
+" i.e: <leader>w saves the current file
+let g:mapleader = ","
 
+" Fast saving
+nmap <leader>w :w!<cr>
+nmap <leader>q :q<cr>
+
+" let g:which_key_map.w = 'save'
 
 " ==================== Fugitive ====================
 " nnoremap <leader>ga :Git add %:p<CR><CR>
 " nnoremap <leader>gp :Gpush<CR>
-nnoremap <leader>gs :Gstatus<CR>
-vnoremap <leader>gb :Gblame<CR>
-
+nnoremap <leader>gs :Git status<CR>
+nnoremap <leader>gb :Git blame<CR>
 
 "==================== NerdTree ====================
 " For toggling
@@ -213,8 +267,38 @@ autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.go :call DeleteTrailingWS()
 
 
+" disable the recording macro, drives me nuts.
+map q <Nop>
+
+" Search mappings: These will make it so that going to the next one in a
+" search will center on the line it's found in.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Do not show stupid q: window
+map q: :q
+
+" Sometimes this happens and I hate it
+map :Vs :vs
+map :Sp :sp
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
+
+augroup filetypedetect
+  au BufNewFile,BufRead .nginx.conf*,nginx.conf* setf nginx
+augroup END
+
+au FileType nginx setlocal noet ts=4 sw=4 sts=4
+
 " GoTo code navigation
 " nmap <silent> gd <Plug>(coc-definition)
 " nmap <silent> gy <Plug>(coc-type-definition)
 " nmap <silent> gi <Plug>(coc-implementation)
 " nmap <silent> gr <Plug>(coc-references)
+"
+
+" https://github.com/junegunn/fzf/blob/master/README-VIM.md
+" If installed using Homebrew on Apple Silicon
+" set rtp+=/opt/homebrew/opt/fzf
