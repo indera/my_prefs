@@ -1,5 +1,6 @@
 # =========================
 # --- Essentials ---
+alias rg='rg -n --color=always'
 alias ls='ls -hp --color=auto'
 alias lsa='ls -lA'
 alias lss='ls -lAtr'
@@ -21,18 +22,22 @@ alias alif='    vim ~/aliases_functions'
 alias alig='  	vim ~/aliases_git'
 alias alik=' 	vim ~/aliases_kube'
 alias alid=' 	vim ~/aliases_docker'
-alias alidb=' 	vim ~/aliases_db'
+alias alin=' 	vim ~/aliases_do_not_commit'
 
 alias refresh='source ~/.zshrc'
 alias refresh2='source ~/.bashrc'
 
 alias bi='brew install'
 alias re='vim README.md'
+alias req='vim requirements.txt'
+alias ta='vim tasks.py'
+
 alias pa='vim package.json'
 alias ma='vim Makefile'
 alias en='vim .env'
 alias dok='vim Dockerfile'
 alias ge='vim Gemfile'
+alias gel='vim Gemfile'
 alias doc='vim docker-compose.yml'
 
 alias vrc='vim ~/.vimrc'
