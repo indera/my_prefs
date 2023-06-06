@@ -28,7 +28,7 @@
 #                                                                          #
 ############################################################################
 
-function dnames-fn {
+function dnames_fn {
 	for ID in `docker ps | awk '{print $1}' | grep -v 'CONTAINER'`
 	do
     	docker inspect $ID | grep Name | head -1 | awk '{print $2}' | sed 's/,//g' | sed 's%/%%g' | sed 's/"//g'
@@ -38,7 +38,7 @@ function dnames-fn {
 function dip_fn {
     echo "IP addresses of all named running containers"
 
-    for DOC in `dnames-fn`
+    for DOC in `dnames_fn`
     do
         IP=`docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}} {{end}}' "$DOC"`
         OUT+=$DOC'\t'$IP'\n'
@@ -75,14 +75,14 @@ function drmclean_fn {
        docker rm $(docker ps --all -q -f status=exited)
 }
 
-function drmid-fn {
+function drmid_fn {
        imgs=$(docker images -q -f dangling=true)
        [ ! -z "$imgs" ] && docker rmi "$imgs" || echo "no dangling images."
 }
 
 # in order to do things like dex $(dlab label) sh
 function dlab {
-       docker ps --filter="label=$1" --format="{{.ID}}"
+       docker ps --filter="label=$1" --format="{{.ID}} {{.Names}}"
 }
 
 function dc_fn {
@@ -101,7 +101,7 @@ function d-aws-cli-fn {
 alias dco=dc_fn
 alias dex=dex_fn
 # alias dps='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}\t{{.Mounts}}" '
-alias dps="docker ps --format 'table {{.ID}}\t{{.Image}}\t{{.Status}}'"
+alias dps="docker ps --format 'table {{.ID}}\t {{.Image}} \t {{.Names}} \t {{.Status}}'"
 alias dpa="docker ps -a"
 alias dl=dl_fn
 
@@ -116,9 +116,9 @@ alias daws=d-aws-cli-fn
 alias dcr=dcr_fn
 
 alias dip=dip_fn
-alias dnames=dnames-fn
+alias dnames=dnames_fn
 alias drm_clean=drmclean_fn
-alias drmid=drmid-fn
+alias drmid=drmid_fn
 
 alias drun=drun_fn
 alias dprun="docker system prune --all"

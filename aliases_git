@@ -28,3 +28,14 @@ alias gin_origin='git fetch && git log ..origin/develop'
 alias gin_upstream='git fetch && git log ..upstream/develop'
 alias gout_origin='git fetch && git log origin/develop..'
 
+
+# List commits on all remote branches
+# git rev-list --remotes
+
+# https://gist.github.com/jasonrudolph/1810768
+# https://stackoverflow.com/questions/36358265/when-does-git-refresh-the-list-of-remote-branches
+# git fetch -p
+# git config remote.origin.prune true
+function gb_30() {
+    git branch -r --format="%(committerdate:iso8601), %(committerdate:relative) - %(refname:short)" | grep -v [H]EAD | awk -v dateA="$(date -d "$(date +%Y-%m-%d) - 3 days" +%Y-%m-%d)" -F '|' 'dateA<=$1" "$2' | awk -F '/' '{ print $NF }'
+}
