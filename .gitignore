@@ -1,14 +1,3 @@
-*
-
 # https://stackoverflow.com/questions/987142/make-gitignore-ignore-everything-except-a-few-files
-!aliases
-!aliases_functions
-!aliases_git
-!aliases_kube
-!gitconfig
-!gitconfig-personal
+# *
 
-
-!/.config
-!/.hammerspoon/*
-!.gitignore

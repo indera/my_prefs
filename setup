@@ -1,0 +1,21 @@
+
+# Link the git files into the proper locations
+
+ln -s ~/git/my_prefs/aliases ~/aliases
+ln -s ~/git/my_prefs/aliases_functions ~/aliases_functions
+ln -s ~/git/my_prefs/aliases_git ~/aliases_git
+ln -s ~/git/my_prefs/aliases_kube ~/aliases_kube
+ln -s ~/git/my_prefs/aliases_docker ~/aliases_docker
+
+
+# See ~/.zshrc for the usage
+
+source ~/aliases
+source ~/aliases_functions
+source ~/aliases_git
+source ~/aliases_kube
+source ~/aliases_docker
+source ~/aliases_do_not_commit
+
+
+
