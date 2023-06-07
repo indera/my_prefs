@@ -1,2 +1,17 @@
 # my_prefs
-things too good to lose :) 
+
+Things too good to lose :) 
+
+# Todo
+
+Consider switching to [YADM](https://yadm.io/docs/getting_started)
+
+
+# Installation
+
+Minimal example:
+
+```
+    ln -s ~/git/my_prefs/.zshrc ~/.zshrc
+    ln -s ~/git/my_prefs/aliases ~/aliases
+```

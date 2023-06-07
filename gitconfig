@@ -1,0 +1,20 @@
+[core]
+	; editor = /usr/bin/vim
+	editor = /opt/homebrew/bin/nvim
+	excludesfile = ~/.gitignore
+
+[includeIf "gitdir:~/git/my_prefs/"]
+	path = .gitconfig-personal
+
+
+#[url "https://"]
+#	insteadOf = git://
+
+
+# https://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit
+[alias]
+    stashgrep = "!f() { for i in `git stash list --format=\"%gd\"` ; \
+              do git stash show -p $i | grep -H --label=\"$i\" \"$@\" ; done ; }; f"
+
+
+

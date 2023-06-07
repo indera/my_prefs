@@ -5,6 +5,8 @@
 !aliases_functions
 !aliases_git
 !aliases_kube
+!gitconfig
+!gitconfig-personal
 
 
 !/.config
