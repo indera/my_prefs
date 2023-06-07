@@ -1,0 +1,124 @@
+
+
+# OhMyZSH
+
+https://ohmyz.sh/#install
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+
+
+wget https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim -O ~/.config/nvim/colors
+wget https://raw.githubusercontent.com/sickill/vim-monokai/master/colors/monokai.vim -O ~/.config/nvim/colors/monokai.vim
+
+## PS1
+
+https://github.com/ohmyzsh/ohmyzsh/issues/5686
+
+
+## Fonts
+
+https://www.nerdfonts.com/font-downloads
+
+OR
+
+# clone
+git clone https://github.com/powerline/fonts.git --depth=1
+# install
+cd fonts
+./install.sh
+# clean-up a bit
+cd ..
+rm -rf fonts
+
+
+## Life is guud
+
+https://budavariam.github.io/posts/2020/04/27/supercharge-your-command-line/
+
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/Aloxaf/fzf-tab ~/.oh-my-zsh/plugins/fzf-tab
+
+[-f ~/.oh-my-zsh/plugins/fzf-tab/fzf-tab.plugin.zsh ] && source ~/.oh-my-zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
+
+
+## DB
+
+pip3 install "psycopg[binary,pool]"
+
+pip3 install pgcli
+
+
+# Net monitor
+
+brew install --cask itraffic
+
+
+# Helm
+
+https://github.com/helmfile/helmfile
+
+brew install helmfile
+helm plugin install https://github.com/databus23/helm-diff
+
+or 
+
+$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+$ chmod 700 get_helm.sh
+$ ./get_helm.sh
+
+
+
+# Images
+
+
+# Minikube
+
+brew install minikube
+minikube addons enable metrics-server
+minikube start --extra-config=kubelet.housekeeping-interval=10s
+
+https://github.com/kubernetes/minikube/issues/13969
+
+
+k create deployment nginx-test --image=nginx
+deployment.apps/nginx-test created
+
+
+k get po -o wide
+NAME                          READY   STATUS    RESTARTS   AGE   IP           NODE       NOMINATED NODE   READINESS GATES
+nginx-test-7d48879f6d-97bkw   1/1     Running   0          35s   10.244.0.4   minikube   <none>           <none>
+
+
+
+minikube start --extra-config=kubelet.housekeeping-interval=10s
+
+
+# Run the echo service
+
+k create deployment hello-minikube --image=kicbase/echo-server:1.0
+k expose deployment hello-minikube --type=NodePort --port=8080
+
+
+minikube service hello-minikube
+|-----------|----------------|-------------|---------------------------|
+| NAMESPACE |      NAME      | TARGET PORT |            URL            |
+|-----------|----------------|-------------|---------------------------|
+| default   | hello-minikube |        8080 | http://192.168.49.2:30784 |
+|-----------|----------------|-------------|---------------------------|
+🏃  Starting tunnel for service hello-minikube.
+|-----------|----------------|-------------|------------------------|
+| NAMESPACE |      NAME      | TARGET PORT |          URL           |
+|-----------|----------------|-------------|------------------------|
+| default   | hello-minikube |             | http://127.0.0.1:54920 |
+|-----------|----------------|-------------|------------------------|
+🎉  Opening service default/hello-minikube in default browser...
+❗  Because you are using a Docker driver on darwin, the terminal needs to be open to run it.
+
+
+k port-forward service/hello-minikube 7080:8080
+
+curl -s http://localhost:7080 | grep curl
+>> User-Agent: curl/7.87.0
+
+
