@@ -1,0 +1,136 @@
+
+# Ruby
+
+binding.pry usage 
+
+https://www.shakacode.com/blog/railsconf-2021-implicit-to-explicit-decoding-rubys-magical-syntax/
+
+!!! https://www.youtube.com/watch?v=rssgWqJq-14
+https://www.hexdevs.com/posts/pry-debug-in-5-minutes/
+
+
+
+# General
+
+https://excalidraw.com/
+https://docs.aws.amazon.com/mwaa/latest/userguide/tutorials-private-network-bastion.html
+
+
+# Yarn
+https://classic.yarnpkg.com/blog/2016/11/24/lockfiles-for-all/
+
+# C-sharp
+
+https://github.com/dotnet/maui
+https://devblogs.microsoft.com/dotnet/introducing-net-multi-platform-app-ui/
+https://github.com/dotnet/corefx/blob/master/Documentation/architecture/net-core-applications.md
+https://michaelscodingspot.com/node-js-vs-dotnet/
+
+
+# Apache arrow
+
+!!! https://blog.gopheracademy.com/advent-2018/go-arrow/
+https://blog.gopheracademy.com/advent-2018/gpio-and-go/
+https://blog.gopheracademy.com/advent-2019/benchmark-magic/
+https://blog.gopheracademy.com/advent-2019/go-grps-and-tls/
+https://blog.gopheracademy.com/advent-2019/directional-channels/
+https://blog.gopheracademy.com/advent-2019/contribute-beyond-code/
+
+
+https://en.wikipedia.org/wiki/AoS_and_SoA
+https://pkg.go.dev/github.com/apache/arrow/go/v9
+https://pkg.go.dev/github.com/apache/arrow/go/arrow
+
+
+# Python
+
+https://en.wikipedia.org/wiki/Zen_of_Python
+There should be one-- and preferably only one --obvious way to do it.
+
+
+https://blog.phylum.io/pick-a-python-lockfile-and-improve-security/
+
+!!! https://towardsdatascience.com/working-with-apis-using-flask-flask-restplus-and-swagger-ui-7cf447deda7f
+(restplus is deprecated)
+
+https://blog.phylum.io/content/images/size/w960/2023/04/snake.webp
+
+
+
+# Golang
+
+!!! 
+https://go.dev/ref/spec - Language specs
+
+https://news.ycombinator.com/item?id=8872400
+
+https://notes.shichao.io/gopl/ch8/
+
+Generics intro https://go.googlesource.com/proposal/+/master/design/go2draft-generics-overview.md
+
+https://gqlgen.com/getting-started/
+https://tutorialedge.net/golang/go-graphql-beginners-tutorial/
+https://www.apollographql.com/blog/graphql/golang/building-a-graphql-server-in-go-with-go-graphql/
+https://www.howtographql.com/graphql-go/0-introduction/
+
+!!!
+
+https://goa.design/learn/getting-started/
+
+https://blog.jetbrains.com/go/2021/02/03/the-state-of-go/
+https://blog.jetbrains.com/blog/2023/01/17/the-state-of-developer-ecosystem-2022/
+
+
+https://erikbern.com/2017/03/15/the-eigenvector-of-why-we-moved-from-language-x-to-language-y.html
+
+
+https://www.youtube.com/@Changelog
+
+
+https://trends.google.com/trends/explore?date=2020-01-01%202023-05-19&geo=US&q=%2Fm%2F06ff5,%2Fm%2F09gbxjr,c%23,typescript,python
+
+
+https://www.linkedin.com/pulse/golang-paypal-modernizing-scaling-reemi-shirsath
+https://www.bairesdev.com/blog/why-golang-is-so-fast-performance-analysis/
+
+
+
+# MySQL
+
+https://explainextended.com/2009/03/17/hierarchical-queries-in-mysql/
+https://explainextended.com/2009/09/29/adjacency-list-vs-nested-sets-mysql/
+
+
+===============================================
+
+
+
+
+# The ability to connect sets you apart
+Selecting transcript lines in this section will navigate to timestamp in the video
+- This is an audio course. Thank you for listening. - You are talking a lot these days about, building stronger customer connections in the digital age. Could you lay it on us, what are some of the benefits associated with face to face connections and this old school stuff when tech technology is run of the show it seems in most of our communications. - Well, yeah, it's back to the future today. It's ironic that the disruptor today in business is good old fashioned relationships, and there's a seismic shift happening in the world today with all the benefits technology's bringing us, it's coming at a significant cost and that cost is human relationships. Which is vital to customer, loyalty, employee satisfaction and just overall happiness, personally and professionally and today is illiterate are those who have an inability to make a meaningful connection. And so the best companies are competing in the relationship economy where the primary currency is the emotional connections made with customers, employees and vendors that make your brand, the brand that people can't live without, and ultimately help you make price irrelevant. - Okay, well that sounds great. So could you share with us some of the most, I guess hard hitting research data studies associated with observations of this phenomenon? - Yeah, well, first five, year 2025 there'll be more machines in the workforce than robots, and Artificial Intelligence will be capable of doing every job that we're currently doing from lawyers to judges, to driving, to construction. So it literally is doing everything and you'll never have to see another human being, I guess if you choose as long as you live. - So the prediction is, by 2025 machines will be doing every job that humans are doing, although I imagine they'll be doing many of them poorly, based on what I'm seeing these days. - Yeah, and not every job, but capable of doing every job and that more machines will be in the workforce than human beings. - All right, how about that? So tell us, how does the human connection help in that context? - Well, as a result of living in a touch screen age and the touch screen age is not generational specific, we have grandparents using devices, and we have five year olds on iPads. But as a result, our social skills, our people skills are at an all time low, and this is causing many negative side effects. There's a term called digital dementia where doctors have done brain scans of heavy users of digital devices. And they look similar to patients who've sustained brain injuries. So we're a relationship disadvantaged today and the leaders out there of businesses need to understand that it's our problem to fix. We can't skip this generation, and so the companies that the pendulum has swung so far over to high tech, low touch or no touch, people, consumers, you, me, we're starving to be recognized as a person with a name and technology's not the enemy, using it to eliminate the human experience is. So companies, the best companies are finding ways to marry the digital with the human interaction that allows technology use do the most basic necessities, allowing freeing up your employees to do what's most important that's building the customer loyalty that is long term sustainability for the business.
+
+
+# The five pillars of building rapport
+Selecting transcript lines in this section will navigate to timestamp in the video
+- I'd love to get your take in particular when it comes to if we're looking to build some rapport, whether that's with sort of new colleagues around the given workplace or with prospects or customers or potential partners, just about anybody, what do you recommend for folks who are looking to more conscientiously build more of the human connection? - Yeah, so, there's five key characteristics to the art of building relationship and they may sound to older generations like common sense, but we all have gotten away from it and it's not common sense to the younger generation, so I'll rattle off the five first. Must be authentic, right? Must have insatiable curiosity. Must have incredible empathy. Must love people and must be a great listener. So, of those five, four of them can definitely be taught and trained. Now, if you find people that have those, that's great, but the one that can't be taught, no amount of training can ever change someone if they don't love people, right? You can't train someone to love people.
+
+
+# Ask questions in four important areas
+Selecting transcript lines in this section will navigate to timestamp in the video
+- [Instructor] I did a "Ted Talk" called "Meet as Strangers Leave as Friends." I don't think there's a greater skill that we can work on ourselves or teach at any level, from kindergarten to the business world, at home, than the ability to build instant rapport with others, whether that be an acquaintance stranger, coworker, customer, you name it. And so in doing that, there's two things we got to remember that everyone we come in contact with has an invisible sign above their head that says, "Make me feel important," and the greatest gift we can give others is the gift of attention. Now it's hard to do that because we are all genetically coded to be preoccupied. It's my flight that got delayed, it's my client that's upset with us, it's my son that may have gotten in trouble, right? So that's a hard thing to turn off when you speak to other people, so we have this great technique that so many of our clients have incorporated, and I incorporate it in personal and professional, it's any time you have a conversation with someone, be it three minutes or 30 minutes, you need to focus on the other person's FORD, F-O-R-D like the car. And if you can focus on the other person's FORD, you not only build the relationship, you own the relationship. So F, family. Are they married? Do they have kids? How old are their kids? The O, occupation. What do they do? What's their title? Who they doing it for? R, recreation, that's some of the hottest buttons that people have. What do they do with their free time? Are they runners? Or they go to hot yoga, they coach little league, whatever that may be. And then D stands for dreams. What's on their bucket list? What's their dream vacation? What is their encore career? So all of our clients have incorporated FORD into their daily interactions. They collect this in a non-soliciting way and they have it in their CRM system, they have pads that remind it, and that's just a great way to build that emotional connection of what's really important to people.
+
+# Avoid stealing the spotlight
+
+Selecting transcript lines in this section will navigate to timestamp in the video
+- Usually whenever you start off with anyone, you just kind of catch up, you find some common ground, but it's important to focus on them and find out what their hot buttons are, and obviously where they come from, their family. If we had more time or we're doing this, we'd get into how you got into what you're doing now, and that's a great story. So, listening is great, and doing research for this book was painful because I realized how many things I was doing wrong. So I have some conversation Nevers and Always. So what I'm listening is, if he asks you a question, you don't ask two to three follow-up questions, odds are you weren't really paying attention, right? You should have a four to one ratio of questions asked versus answered. There's a myth that being a good listener is like being a sponge. And they say that's the farthest thing from the truth. So being a sponge is you're just talking away and I'm once in a while just saying "uh huh, uh huh." And they say, that's not being a good listener, being a good listener is being a trampoline. So a trampoline is asking more clarifying questions and helping in heightening the energy of what the person speaking is doing. So, there's a lot of really cool things like that. Some really painful things I stumbled on was don't ask a question because you're dying to answer it. Right, so it's like you know, "Peter, tell me what you did this weekend. "Oh, good good, you know what I did?" You know, and then. "I was skiing, it was awesome." - Yeah, I hear you. - Right, right. Don't finish the other person's sentence. And then one that I'm really guilty of that I never thought it was a bad thing until I read about it, is stealing someone's thunder. And so the example I read about really made me realize I do this all the time but I did it with good intention. So, you might have an employee that was off last week and you're like, "Peter junior, what'd you do on vacation?" And young Peter says he took his wife and two little ones to Disney. And he's so excited, he wants to tell you about it, and you interrupt him by saying, "Oh my God, I love Disney." "We actually have a house there in Orlando." And originally thinking that would show some commonality but you just stole this thunder because what could someone possibly tell someone about Disney who has property there, right? So just being more attentive to not one upping or grand standing and just letting the other person have their moment. - That's a really nice thought. I think about it almost like a game of chess. Not that we're trying to dominate the other but you want to think about what does that open up in terms of moves after your move? So you might mention, "Oh, hey, this is common. "I've got a home in Orlando." But if you think about that for a moment, it's like what options does that leave this person? Very few.
+
+
+# Get curious by thinking like a reporter
+Selecting transcript lines in this section will navigate to timestamp in the video
+- Another painful thing, 30 years ago if you couldn't talk to me about my two subjects and that was all I was interested in, which was basically baseball or customer service anyone have anything to do with it, right? My wife said, "Hey, we're going to go out with Joanne and her husband I'd be like, "Oh God, no, Oh, I can't sit through another night with them" and that was totally my fault. Cause I was only interested in my thing, but I've learned through what's called insatiable curiosity to become an Investigative reporter and just really pick someone's brain and you might find out obscure things that you might not be interested in he might be interested in Fly fishing and you dig deeper, Why? How did you get into Fly fishing? And to me that seems a little boring and at the end of the conversation, three things always come away. One, I really see why that person likes, let's say Fly fishing. Doesn't mean I'm going to go out and do it tomorrow but from his passion or the way he talked about the benefits, now I can see it. Number two, which is probably most important he really liked talking to me which means I win points at home with my significant other right, but here's the strangest thing, this always happens I'm sure it's happened in your life. Six months later, I'll be in a CEO's office trying to close a sale or something and there'll be a picture of him Fly fishing on his wall. And because of that conversation I can have an more educated conversation and I make a connection easier than if I never had that connection. So there's just so many benefits but there's things like we find out from our clients or acquaintances that they're running their first marathon this weekend, or they're going to Maui and you could do so many things with that if it's a good client, we'll have a bottle of wine and cheese waiting for them when they get into their room. So there's just so much more just circling back two weeks and finding out how their trip to Maui was. - Yeah, that's cool. And so I'm curious when it comes to curious about curiosity. So now I guess I think where the rubber really meets the road is you chat with someone, they say something you have no interest in that thing whatsoever. What you do with your brain to stir up some of this interest and curiosity when you're not feeling it in the moment? - I trained myself because you just got to be called Investigative reporter you want to find out - Right. - What makes them tick. So if it's important to the other person, find out why and that's where the beauty, that's where the magic happens so I'm being transparent here, but what's your recreation? What would you like to do with your time off when you're not changing diapers? - Oh, why don't we say tabletop games, shall we? I'm thinking about monopoly at the moment. - Okay, and so that's not something that I personally do I wouldn't say this, but I personally don't play games and so I would just explore how'd you get into, is that something that started as kids? Everything has an angle because what would get someone to love to play tabletop games? There's a story there. And usually if it's something they're passionate about, they like telling that story most people don't ask them about it.
+
+# Steer conversations to positive memories
+Selecting transcript lines in this section will navigate to timestamp in the video
+- I think it's about to be a great example, and you could very candidly tell me what's going on in your brain, because you're not going to hurt my feelings. It's okay if you walk away, still not giving a hoot about TableTop games or Monopoly, but I think that's a cool start. So here we are. I've shared something, that isn't that interesting to you, but let's say we have the time. So, where do you go from there? - Yeah, is this something you do like regularly? Is it something like you get people around? How often did do you do this and with whom? - Boy you know it's been a while. I remember the peak Monopoly occurred in the winter breaks of high school and college, where my crew, shout out to Ronny, Kevin, Brent and Kate, for the most part, we would be the ones, would come together and maybe display three four games in a night, and so don't joke five six seven hours of Monopoly. - That's why I was going to ask you, how many hours? So that's like equivalent to what people are doing today with binge-watching, an episode or something. - Oh yeah, absolutely. - But I got to believe that was like, some of your best memories and bonding and hilarious stories that came from that. - Well, you know, it's funny indeed. We had all kinds of dorkiness came out because, so we played pretty strictly in terms of official tournament rules, 32 houses, 12 hotels, none of this silliness. - You guys were serious. - We wanted people to roll the dice briskly, so we can finish the games and all kinds of little, then I guess subcultural things emerged like when, all 32 houses were bought up, and then someone landed on another property, had to have a big Payday, Then you start chanting, sell houses, sell houses, cause we were all excited and there was like blood in the water and we all got fired up over it. - So do you have ever have any reunions with Ronny and the gang? - You know, it happens here and there, but it's a little bit tricky in terms of us being located all over the place. - Can you play virtually? - I've looked into this, and the answer is kind of, I haven't found like the ideal platform that is reliable and honors true tournament rules, but there's some stuff out there yeah. - Well, I still got to believe, the best thing that came away was just the memories, the conversations, the digging at each other, that of course groups of friends do, and when you get together, that all comes back. - Oh yeah, absolutely. But perhaps the most legendary one was, we hosted a Monopoly tournament at the high school, and I was helping another table with the rules dispute, and my buddy Kevin, whispered to this like 10 year-old girl, who was at our table, he's winning, you should trade that to me. And when I turned my back, the trade had been done. I was like, what happened? And Kevin went on to win the whole tournament, and he's featured in the yearbook and I consider it stolen. (Both laughing) - That's so funny, that's funny. Oh, very good. Now I'm intrigued to play Monopoly the next time someone pulls it out. - Sure thing, all right. Well, thank you for indulging me with that extended demo. And boy you're right in terms of like the rapport, and that, the more you get people, I guess I'm not looking at your face, but I'm hearing your voice, but I guess it's just very natural that as you steer me toward positive experiences, and I am sharing them with you, in a current experience of conversation, I naturally associate you John, with pleasantness, and thusly, I like you more. - Exactly. You know you could talk to someone for an hour about them, and they want to ask you one question about you, but they'll walk away saying, you are the greatest person ever, even though they couldn't tell someone why, but exactly what you just said, they just associate you with that fondness, and they were able to talk about, there's certain things in my world, that you don't want to ask me unless you have two hours, because I'm going to tell you, I'm going to get all worked up and my voice will start cracking, And you'll be like, whoa, whoa, whoa. Right? So finding people's hot buttons, is the single best way to create an emotional connection. And then doing something with that, taking three minutes on Google later and seeing if there's any digital Monopoly things, and you send that email to Peter saying, Peter, have you seen these? I mean, it literally takes three minutes, and whether he has seen them or he hasn't, he's going to be shocked at the time and thoughtfulness that that person, who barely has a relationship with, thought of and it's not just about making a sale.
+
