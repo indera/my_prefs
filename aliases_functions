@@ -1,4 +1,10 @@
 
+# yml as json
+# yq config.yml -o=json | head
+
+# ec2 instances info
+# aws ec2 describe-instances | jq '.Reservations[].Instances[] | "\(.InstanceId) \(.KeyName) \(.Platform) \(.InstanceType) PrivateIP:\(.PrivateIpAddress) \(.State.Name)"' | grep running
+
 function mongo_local() {
     docker exec -it mongodb bash -c '/usr/bin/mongosh -u admin -p password'
 }
