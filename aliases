@@ -1,17 +1,3 @@
-# ~/.gitconfig
-#[alias]
-    # stashgrep = "!f() { for i in `git stash list --format=\"%gd\"` ; \
-              # do git stash show -p $i | grep -H --label=\"$i\" \"$@\" ; done ; }; f"
-
-    # https://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit
-
-# [includeIf "gitdir:~/git/my_prefs/"]
-# 	path = .gitconfig-personal
-#
-# [includeIf "gitdir/i:~/git/company/"]
-# 	path = .gitconfig-professional
-#
-
 # =========================
 # --- Essentials ---
 alias rg='rg -n --color=always'
