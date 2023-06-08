@@ -7,7 +7,7 @@ Things too good to lose :)
 Consider switching to [YADM](https://yadm.io/docs/getting_started)
 
 See a list of tools https://dotfiles.github.io/utilities/
-
+See example repo with configs git@github.com:sheharyarn/dotfiles.git
 
 # Installation
 
