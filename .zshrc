@@ -1,3 +1,10 @@
+# Turn off all beeps
+unsetopt beep
+
+# Turn off autocomplete beeps
+# unsetopt LIST_BEEP
+
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -78,10 +85,11 @@ ZSH_THEME="agnoster"
 # source ~/.zsh/fzf-tab/fzf-tab.plugin.zsh
 
 plugins=(
-	git
-	fzf
-	fzf-tab
-	zsh-autosuggestions
+    git
+    fzf
+    fzf-tab
+    z # enables fast cd: z xyz
+    zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -112,12 +120,22 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export LESS="-I -R -M  -FSX --shift=5"
+# -Q disable beep on end-of-less
+export LESS="-I -R -M -Q -FSX --shift=5"
+
+# brew install pygments
+# to list available styles: `pygmentize -L styles`
+export PYGMENTIZE_STYLE='paraiso-dark'
 
 eval $(/opt/homebrew/bin/brew shellenv)
 source ~/aliases
-source ~/aliases_git
+source ~/aliases_docker
+source ~/aliases_do_not_commit
 source ~/aliases_functions
+source ~/aliases_git
+source ~/aliases_kube
+
+
 
 
 # /opt/homebrew/bin/
@@ -126,20 +144,37 @@ export FZF_DEFAULT_OPTS='--height 40%'
 
 
 # Not sure I like this
-source ~/.config/fzf-tab/fzf-tab.plugin.zsh
+# source ~/.oh-my-zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
+# [-f ~/.oh-my-zsh/plugins/fzf-tab/fzf-tab.plugin.zsh ] && source ~/.oh-my-zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
 
 # which aws_completer
 # /opt/homebrew/bin/aws_completer
 # export PATH=/home/asura/bin:/opt/homebrew/bin/:$PATH
 export PATH="$HOME/bin":$PATH
 
+export PATH="$PATH:$(go env GOPATH)/bin"
+
 # export PATH=/opt/homebrew/bin/:$PATH
 # export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
+autoload -U compinit
+compinit -i
+
 complete -C '/opt/homebrew/bin/aws_completer' aws
+
+# https://taskfile.dev/installation/#zsh
+# sudo wget https://raw.githubusercontent.com/go-task/task/main/completion/zsh/_task -O /usr/local/share/zsh/site-functions/_task
+#   or link it 
+# ln -s ~/.config/task/task_completion /usr/local/share/zsh/site-functions/_task
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# export PATH="/opt/homebrew/opt/go@1.19/bin:$PATH"
+export PATH="/opt/homebrew/opt/go@1.20/bin:$PATH"
+
+

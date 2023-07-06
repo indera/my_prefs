@@ -11,6 +11,9 @@ alias gp='git remote -v'
 alias gf='git show --name-status'
 alias gan='git blame'
 
+alias gtag='git show `git describe` --pretty=fuller'
+
+
 alias gtop='git shortlog -s -n'
 alias glast='git diff HEAD^..HEAD'
 alias glastf='git diff-tree --no-commit-id --name-only -r HEAD'
@@ -43,7 +46,6 @@ alias ghbf="gh tree/$(git symbolic-ref --quiet --short HEAD )/$(git rev-parse --
 
 # Open current directory/file in master branch
 alias ghf='gh tree/master/$(git rev-parse --show-prefix)'
-
 
 
 # List commits on all remote branches

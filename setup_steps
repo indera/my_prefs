@@ -1,5 +1,4 @@
 
-
 # OhMyZSH
 
 https://ohmyz.sh/#install
@@ -7,8 +6,41 @@ https://ohmyz.sh/#install
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 
+# Tools
 
-wget https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim -O ~/.config/nvim/colors
+## Must haves
+brew install tig htop nvim wget
+
+## File utils
+brew install colordiff jq yq 
+
+# Window movement
+brew install --cask hammerspoon
+
+# Node stuff
+brew install nvm yarn
+
+
+## Terraform
+
+!!! https://www.mukeshsharma.dev/2022/02/08/neovim-workflow-for-terraform.html
+
+git clone https://github.com/hashivim/vim-terraform.git ~/.config/nvim/plugged/vim-terraform
+
+https://github.com/hashicorp/terraform-ls/blob/main/docs/installation.md
+brew install hashicorp/tap/terraform-ls
+
+https://github.com/terraform-linters/tflint#installation
+brew install tflint
+
+
+
+# fix python3 not found
+# https://www.reddit.com/r/neovim/comments/i65pwd/no_python3_provider_found_run_checkhealth_provider/
+python3 -m pip install --user --upgrade pynvim
+
+mkdir ~/.config/nvim/colors
+wget https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim -O ~/.config/nvim/colors/molokai.vim
 wget https://raw.githubusercontent.com/sickill/vim-monokai/master/colors/monokai.vim -O ~/.config/nvim/colors/monokai.vim
 
 ## PS1
@@ -51,8 +83,9 @@ pip3 install pgcli
 
 # Net monitor
 
-brew install --cask itraffic
+brew install --cask itraffic (not signed)
 
+brew install bmon
 
 # Helm
 

@@ -31,9 +31,24 @@ Plug 'tyru/open-browser.vim'
 " Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
 
-" Lang support
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Elixir support
 Plug 'elixir-editors/vim-elixir'
+
+
+" golang support
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'vim-test/vim-test'
+
+
+" https://github.com/josa42/coc-go
+" :CocInstall coc-go
+
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'mattn/vim-lsp-settings'
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Plug 'prabirshrestha/asyncomplete-gocode.vim'
+
 
 " https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
 " React syntax highlighting and indenting, supports typescript tsx
@@ -60,6 +75,7 @@ Plug 'numToStr/Comment.nvim'
 " Python https://realpython.com/vim-and-python-a-match-made-in-heaven/
 Plug 'vim-syntastic/syntastic'
 Plug 'nvie/vim-flake8'
+Plug 'davidhalter/jedi-vim'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -73,7 +89,7 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 
 " https://github.com/neoclide/coc.nvim
-" :CocInstall coc-json coc-tsserver
+" :CocInstall coc-go coc-json coc-tsserver
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " code to image file
@@ -81,11 +97,26 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
+
+" !!! https://jogendra.dev/using-vim-for-go-development
+au filetype go inoremap <buffer> . .<C-x><C-o>
+let g:go_doc_window_popup_window = 1
+
+" Python only?
+let g:jedi#popup_on_dot = 1
+
 " https://medium.com/@ericclifford/neovim-item2-truecolor-awesome-70b975516849
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " pip3 install --user pynvim
 let g:deoplete#enable_at_startup = 1
+
+
+" Auto formatting and importing
+" let g:go_fmt_autosave = 1
+" let g:go_fmt_command = "goimports"
+
+
 
 " select the color scheme
 " wget https://raw.githubusercontent.com/indera/molokai/master/colors/molokai.vim -P ~/.config/nvim/colors/
@@ -199,6 +230,7 @@ inoremap <C-U> <C-G>u<C-U>
 au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 autocmd filetype go nnoremap <F4> :w <bar> exec '!go run '.shellescape('%')<CR>
 autocmd filetype go nnoremap <c-c> :w <bar> exec '!go run '.shellescape('%')<CR>
+autocmd filetype go nnoremap <F5> :w <bar> :GoBuild <CR>
 
 " Python
 autocmd filetype python nnoremap <F4> :w <bar> exec '!python3 '.shellescape('%')<CR>
@@ -302,3 +334,9 @@ au FileType nginx setlocal noet ts=4 sw=4 sts=4
 " https://github.com/junegunn/fzf/blob/master/README-VIM.md
 " If installed using Homebrew on Apple Silicon
 " set rtp+=/opt/homebrew/opt/fzf
+
+" Edit vimr configuration file
+nnoremap <Leader>ve :e $MYVIMRC<CR>
+" " Reload vimr configuration file
+nnoremap <Leader>vr :source $MYVIMRC<CR>
+

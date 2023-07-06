@@ -1,13 +1,14 @@
 # =========================
 # --- Essentials ---
 alias rg='rg -n --color=always'
+alias grep='grep --color=always'
 alias ls='ls -hp --color=auto'
 alias lsa='ls -lA'
 alias lss='ls -lAtr'
 alias dua='du -hcs'
 alias cdd="cd ..    		&& pwd"
 alias cdg='cd ~/git 		&& lss'
-alias cdm='cd ~/git/my_prefs 	&& lss'
+alias cd_prefs='cd ~/git/my_prefs 	&& lss'
 
 # alias vim=/usr/bin/vim
 alias vim='nvim'
@@ -33,7 +34,13 @@ alias re='vim README.md'
 # Python
 alias fre='python -m pip list'
 alias req='vim requirements.txt'
-alias ta='vim tasks.py'
+alias tap='vim tasks.py'
+
+# Task
+# https://taskfile.dev/usage/ - brew install go-task
+alias t='task'
+alias ta='vim Taskfile.yml'
+alias ta2='vim .Taskfile.yml'
 
 alias pa='vim package.json'
 alias ma='vim Makefile'
@@ -42,6 +49,7 @@ alias dok='vim Dockerfile'
 alias ge='vim Gemfile'
 alias gel='vim Gemfile'
 alias doc='vim docker-compose.yml'
+alias gitc='vim ~/.gitconfig'
 
 alias vrc='vim ~/.vimrc'
 alias ba='vim ~/.bashrc'
@@ -59,3 +67,7 @@ alias net='sudo bmon'
 
 alias se='vim ~/git/setup/README.md'
 alias ste='vim steps.md'
+
+# go clean -cache
+alias goc='du -hs $(go env GOCACHE)'
+

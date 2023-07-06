@@ -11,11 +11,16 @@ See example repo with configs git@github.com:sheharyarn/dotfiles.git
 
 # Installation
 
-Minimal example:
-
 ```
     ln -s ~/git/my_prefs/.zshrc ~/.zshrc
-    ln -s ~/git/my_prefs/aliases ~/aliases
+    ln -s ~/git/my_prefs/.vimrc ~/.config/nvim/init.vim
+
+    ln -s ~/git/my_prefs/aliases            ~/aliases
+    ln -s ~/git/my_prefs/aliases_functions  ~/aliases_functions
+    ln -s ~/git/my_prefs/aliases_git        ~/aliases_git
+    ln -s ~/git/my_prefs/aliases_docker     ~/aliases_docker
+    ln -s ~/git/my_prefs/aliases_kube       ~/aliases_kube
+
 ```
 
 # Personal ssh key
