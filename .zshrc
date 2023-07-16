@@ -1,9 +1,9 @@
 # Turn off all beeps
 unsetopt beep
 
-# Turn off autocomplete beeps
-# unsetopt LIST_BEEP
-
+# https://apple.stackexchange.com/questions/136928/using-alt-cmd-right-left-arrow-in-iterm
+bindkey "\e\e[D" backward-word
+bindkey "\e\e[C" forward-word
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -152,7 +152,22 @@ export FZF_DEFAULT_OPTS='--height 40%'
 # export PATH=/home/asura/bin:/opt/homebrew/bin/:$PATH
 export PATH="$HOME/bin":$PATH
 
+
+# https://www.programming-books.io/essential/go/gopath-goroot-gobin-d6da4b8481f94757bae43be1fdfa9e73
+# GOROOT - This is the location of your Go installation. It is used to find the standard libraries.
+# go env GOROOT => /opt/homebrew/Cellar/go/1.20.5/libexec
+# 
+# GOBIN - The directory where go install and go get will place binaries after building main packages.
+#         Generally this is set to somewhere on the system PATH so that installed binaries can be run and discovered easily.
+# It was set to /Users/andreisura/.local/bin
+# go env -w GOBIN=$(go env GOROOT)/bin
+
+
+# export GOROOT=$(go env GOROOT)
+# export GOBIN=$(go env GOROOT)/bin
+
 export PATH="$PATH:$(go env GOPATH)/bin"
+export PATH="$PATH:$(go env GOROOT)/bin"
 
 # export PATH=/opt/homebrew/bin/:$PATH
 # export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
@@ -178,3 +193,11 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="/opt/homebrew/opt/go@1.20/bin:$PATH"
 
 
+# You can opt-out of telemetry by setting the FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT environment variable to '1' or 'true' using your favorite shell.
+export FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT=1
+
+export GPG_TTY=$(tty)
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
