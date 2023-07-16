@@ -1,6 +1,6 @@
 # =========================
 # --- Essentials ---
-alias rg='rg -n --color=always'
+alias rg='rg -in -. --color=always'
 alias grep='grep --color=always'
 alias ls='ls -hp --color=auto'
 alias lsa='ls -lA'
@@ -8,7 +8,8 @@ alias lss='ls -lAtr'
 alias dua='du -hcs'
 alias cdd="cd ..    		&& pwd"
 alias cdg='cd ~/git 		&& lss'
-alias cd_prefs='cd ~/git/my_prefs 	&& lss'
+alias cd_os='cd ~/git/open-source && lss'
+alias cd_prefs='cd ~/git/my_prefs && lss'
 
 # alias vim=/usr/bin/vim
 alias vim='nvim'
@@ -46,6 +47,7 @@ alias pa='vim package.json'
 alias ma='vim Makefile'
 alias en='vim .env'
 alias dok='vim Dockerfile'
+alias dokk='vim deploy/Dockerfile'
 alias ge='vim Gemfile'
 alias gel='vim Gemfile'
 alias doc='vim docker-compose.yml'
@@ -59,6 +61,8 @@ alias fin='find . -iname'
 alias bigg='du -hcs * | grep -E "M|G"'
 alias big_find='find ./ -size +10000k  | xargs ls -hsS'
 alias big='ls -phsS | head -10'
+
+alias path_ls="echo $PATH | tr ':' '\n'|sort -rn"
 
 # https://linuxize.com/post/check-listening-ports-linux/
 alias ports='sudo lsof -nP -iTCP -sTCP:LISTEN'
