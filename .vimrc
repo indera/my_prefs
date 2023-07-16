@@ -6,19 +6,24 @@ set mouse=
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'dstein64/vim-startuptime'
+
 " https://github.com/morhetz/gruvbox
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
-" Plug 'dinhhuy258/git.nvim' " lua clone
+
+" Word          ysiw)'      aa      => (aa)
+" line          yss'        aa bb   => 'aa bb'
+Plug 'tpope/vim-surround'
 
 Plug 'preservim/nerdtree'
 
 " https://sourcediving.com/better-fuzzy-finding-in-vim-2f1e8597b3b9
 " Plug 'kien/ctrlp.vim'
 Plug 'junegunn/fzf'
-"https://github.com/junegunn/fzf.vim 
+"https://github.com/junegunn/fzf.vim
 " Example
-"   :Rg [PATTERN]	rg search result (ALT-A to select all, ALT-D to deselect all)
+"   :Rg [PATTERN]   rg search result (ALT-A to select all, ALT-D to deselect all)
 " Plug 'junegunn/fzf.vim'
 
 " plantUML
@@ -26,6 +31,14 @@ Plug 'aklt/plantuml-syntax'
 Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'tyru/open-browser.vim'
 
+
+" https://stackoverflow.com/questions/9212340/is-there-a-vim-plugin-for-previewing-markdown-files
+" let g:instant_markdown_autostart = 0
+Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
+
+" Linting
+" https://medium.com/@jimeno0/eslint-and-prettier-in-vim-neovim-7e45f85cf8f9
+" Plug 'w0rp/ale'
 
 " show diffs inline
 " Plug 'airblade/vim-gitgutter'
@@ -38,6 +51,9 @@ Plug 'elixir-editors/vim-elixir'
 " golang support
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'vim-test/vim-test'
+
+
+Plug 'editorconfig/editorconfig-vim'
 
 
 " https://github.com/josa42/coc-go
@@ -59,8 +75,10 @@ Plug 'peitalin/vim-jsx-typescript'
 " Plug 'yuezk/vim-js'
 
 Plug 'David-Kunz/jester'
+
 " https://github.com/nvim-treesitter/nvim-treesitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 " debugger
 Plug 'mfussenegger/nvim-dap'
 
@@ -74,22 +92,20 @@ Plug 'numToStr/Comment.nvim'
 
 " Python https://realpython.com/vim-and-python-a-match-made-in-heaven/
 Plug 'vim-syntastic/syntastic'
+
 Plug 'nvie/vim-flake8'
 Plug 'davidhalter/jedi-vim'
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" Completion plugin - https://github.com/Shougo/ddc.vim
+Plug 'Shougo/ddc.vim'
+Plug 'vim-denops/denops.vim'
+" Plug 'vim-denops/denops-helloworld.vim'
 
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
+" Plug 'Shougo/neosnippet.vim'
+" Plug 'Shougo/neosnippet-snippets'
 
 " https://github.com/neoclide/coc.nvim
-" :CocInstall coc-go coc-json coc-tsserver
+" :CocInstall coc-go coc-json coc-tsserver coc-eslint
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " code to image file
@@ -111,11 +127,11 @@ let g:jedi#popup_on_dot = 1
 " pip3 install --user pynvim
 let g:deoplete#enable_at_startup = 1
 
+let g:instant_markdown_autostart = 0
 
 " Auto formatting and importing
 " let g:go_fmt_autosave = 1
 " let g:go_fmt_command = "goimports"
-
 
 
 " select the color scheme
@@ -147,7 +163,7 @@ set backspace=indent,eol,start  " Makes backspace key more powerful.
 " set showcmd                     " Show me what I'm typing
 
 set noswapfile
-set nobackup					" Don't create annoying backup files
+set nobackup                    " Don't create annoying backup files
 set nowritebackup
 set undofile
 set undodir=$HOME/.vim/undo
@@ -163,14 +179,14 @@ set smartcase                   " ... but not when search pattern contains upper
 
 set ttyfast
 " set ttyscroll=3               " noop on linux ?
-set lazyredraw          	    "Don't redraw while executing macros (good performance config)
+set lazyredraw                  "Don't redraw while executing macros (good performance config)
 
 " speed up syntax highlighting
 set nocursorcolumn
 set nocursorline
 
 filetype plugin indent on
-" set mouse=a
+
 set mouse-=a
 
 " Apply the indentation of the current line to the next line.
@@ -222,7 +238,7 @@ nnoremap <F7> :set signcolumn=no<CR>
 nnoremap <space> <C-w><C-w>k<CR>
 nnoremap <S-space> <C-w><C-p>k<CR>
 
-" CTRL-U in insert mode deletes a lot.	Use CTRL-G u to first break undo,
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
 
@@ -269,7 +285,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 
 
-" ===== Must have restore position (go to last edit location) === 
+" ===== Must have restore position (go to last edit location) ===
 function! ResCur()
   if line("'\"") <= line("$")
     normal! g`"
@@ -297,6 +313,7 @@ endfunc
 
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.go :call DeleteTrailingWS()
+autocmd BufWrite *.vimrc :call DeleteTrailingWS()
 
 
 " disable the recording macro, drives me nuts.
@@ -310,9 +327,9 @@ nnoremap N Nzzzv
 " Do not show stupid q: window
 map q: :q
 
-" Sometimes this happens and I hate it
-map :Vs :vs
-map :Sp :sp
+" Sometimes this happens and I hate it (never use these for speed)
+" map :Vs :vs
+" map :Sp :sp
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
@@ -324,12 +341,22 @@ augroup END
 
 au FileType nginx setlocal noet ts=4 sw=4 sts=4
 
+
+" fun! TrimWhitespace()
+"     let l:save = winsaveview()
+"     keeppatterns %s/\s\+$//e
+"     call winrestview(l:save)
+" endfun
+
+" trim space
+autocmd BufWritePre *Taskfile.yml,*.md :%s/\s\+$//ge
+
 " GoTo code navigation
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gr <Plug>(coc-references)
-"
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 
 " https://github.com/junegunn/fzf/blob/master/README-VIM.md
 " If installed using Homebrew on Apple Silicon
@@ -337,6 +364,6 @@ au FileType nginx setlocal noet ts=4 sw=4 sts=4
 
 " Edit vimr configuration file
 nnoremap <Leader>ve :e $MYVIMRC<CR>
-" " Reload vimr configuration file
+" Reload vimr configuration file
 nnoremap <Leader>vr :source $MYVIMRC<CR>
 
