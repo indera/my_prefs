@@ -102,6 +102,7 @@ alias dco=dc_fn
 alias dex=dex_fn
 # alias dps='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}\t{{.Mounts}}" '
 alias dps="docker ps --format 'table {{.ID}}\t {{.Image}} \t {{.Names}} \t {{.Status}}'"
+alias dpp="docker ps --format 'table {{.ID}}\t \t {{.Names}} \t {{.Status}} \t {{.Ports}}'"
 alias dpa="docker ps -a"
 alias dl=dl_fn
 
