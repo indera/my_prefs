@@ -1,10 +1,9 @@
 {
-    "workbench.colorTheme": "Visual Studio Light",
-    "workbench.colorTheme": "Monokai Classic",
-
     "editor.fontSize": 16,
     "editor.mouseWheelZoom": true,
+    "window.zoomLevel": 1,
     "security.workspace.trust.untrustedFiles": "open",
+    "workbench.colorTheme": "Monokai Dark Soda",
 
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true,
@@ -13,6 +12,8 @@
     },
     
     "eslint.validate": ["javascript"],
+    
+    "prettier.enable" : true,
     "prettier.singleQuote": true,
     "prettier.semi": false,
 
@@ -24,6 +25,7 @@
 
     "telemetry.telemetryLevel": "crash",
     "redhat.telemetry.enabled": false,
-    "window.zoomLevel": 1
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "typescript.preferences.importModuleSpecifierEnding": "js"
 
 }
