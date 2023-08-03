@@ -33,7 +33,9 @@ Plug 'tyru/open-browser.vim'
 
 
 " https://stackoverflow.com/questions/9212340/is-there-a-vim-plugin-for-previewing-markdown-files
+" :help vim-instant-markdown-configuration
 " let g:instant_markdown_autostart = 0
+" let g:instant_markdown_slow = 1
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 
 " Linting
@@ -86,6 +88,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'numToStr/Comment.nvim'
 
+" Plug 'Raimondi/delimitMate' - closes ''
+
 "!!!  https://farazdagi.com/posts/2015-01-10-vim-as-golang-ide/
 " Plug 'jiangmiao/auto-pairs'
 
@@ -93,13 +97,13 @@ Plug 'numToStr/Comment.nvim'
 " Python https://realpython.com/vim-and-python-a-match-made-in-heaven/
 Plug 'vim-syntastic/syntastic'
 
-Plug 'nvie/vim-flake8'
-Plug 'davidhalter/jedi-vim'
+" Plug 'nvie/vim-flake8'
+" Plug 'davidhalter/jedi-vim'
 
 " Completion plugin - https://github.com/Shougo/ddc.vim
 Plug 'Shougo/ddc.vim'
-Plug 'vim-denops/denops.vim'
-" Plug 'vim-denops/denops-helloworld.vim'
+" Plug 'vim-denops/denops.vim' start a deno process every time vim is open???
+" Plug 'vim-denops/deno-helloworld.vim'
 
 " Plug 'Shougo/neosnippet.vim'
 " Plug 'Shougo/neosnippet-snippets'
@@ -111,6 +115,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " code to image file
 " Plug 'krivahtoo/silicon.nvim', { 'do': './install.sh' }
 
+" Plug 'tjdevries/colorbuddy.nvim'
+" Plug 'svrana/neosolarized.nvim'
+Plug 'Tsuzat/NeoSolarized.nvim', { 'branch': 'master' }
+
 call plug#end()
 
 
@@ -119,15 +127,16 @@ au filetype go inoremap <buffer> . .<C-x><C-o>
 let g:go_doc_window_popup_window = 1
 
 " Python only?
-let g:jedi#popup_on_dot = 1
+" let g:jedi#popup_on_dot = 1
 
 " https://medium.com/@ericclifford/neovim-item2-truecolor-awesome-70b975516849
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " pip3 install --user pynvim
-let g:deoplete#enable_at_startup = 1
+" DENO?
+" let g:deoplete#enable_at_startup = 1
 
-let g:instant_markdown_autostart = 0
+let g:instant_markdown_autostart = 1
 
 " Auto formatting and importing
 " let g:go_fmt_autosave = 1
@@ -140,12 +149,16 @@ let g:instant_markdown_autostart = 0
 try
     " colorscheme gruvbox
     " colorscheme molokai
+    " colorscheme NeoSolarized
     colorscheme monokai
 
     " https://github.com/numToStr/Comment.nvim
     lua require('Comment').setup()
-    " lua require('git').setup()
-    "
+
+    " lua require('neosolarized').setup({
+    "     comment_italics = true,
+    "     background_set = false,
+    " })
 catch
 endtry
 
@@ -304,7 +317,7 @@ augroup END
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+" Delete trailing white space on save
 func!DeleteTrailingWS()
   exe "normal mz"
   %s/\s\+$//ge
@@ -313,8 +326,13 @@ endfunc
 
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.go :call DeleteTrailingWS()
+autocmd BufWrite *.ts :call DeleteTrailingWS()
+autocmd BufWrite *.md :call DeleteTrailingWS()
 autocmd BufWrite *.vimrc :call DeleteTrailingWS()
+autocmd BufWrite Makefile :call DeleteTrailingWS()
 
+" trim white space
+autocmd BufWritePre *Taskfile.yml :%s/\s\+$//ge
 
 " disable the recording macro, drives me nuts.
 map q <Nop>
@@ -342,20 +360,58 @@ augroup END
 au FileType nginx setlocal noet ts=4 sw=4 sts=4
 
 
-" fun! TrimWhitespace()
-"     let l:save = winsaveview()
-"     keeppatterns %s/\s\+$//e
-"     call winrestview(l:save)
-" endfun
+" Python help
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-" trim space
-autocmd BufWritePre *Taskfile.yml,*.md :%s/\s\+$//ge
+" https://github.com/vim-syntastic/syntastic
+let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_check_on_wq = 0
 
+" ==================== --- ============================
+" ==================== COC ============================
 " GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+function! SetupCommandAbbrs(from, to)
+  exec 'cnoreabbrev <expr> '.a:from
+        \ .' ((getcmdtype() ==# ":" && getcmdline() ==# "'.a:from.'")'
+        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfunction
+
+" Use C to open coc config
+call SetupCommandAbbrs('C', 'CocConfig')
+
+
+" Conflic on tab completion
+" https://superuser.com/questions/1734914/neovim-coc-nvim-enter-key-doesnt-work-to-autocomplete
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+" :CocInstall coc-pairs
+
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config
+
+" navigate
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 
 " https://github.com/junegunn/fzf/blob/master/README-VIM.md
@@ -367,3 +423,18 @@ nnoremap <Leader>ve :e $MYVIMRC<CR>
 " Reload vimr configuration file
 nnoremap <Leader>vr :source $MYVIMRC<CR>
 
+
+" Shortcuts for end and home.
+map <s-right> <end>
+map <s-left> <home>
+
+" Speling iz gode.
+noremap <leader>sc :setlocal spell! spelllang=en_us<cr>
+inoremap <leader>sc <c-\><c-o>:setlocal spell! spelllang=en_us<cr>
+
+" Reselect the deselected blocks in visual mode.
+" vnoremap < <gv
+" vnoremap > >gv
+
+" SENTENCE DOUBLE-SPACING SHOULDN'T BE THE DEFAULT.
+set nojoinspaces

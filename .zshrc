@@ -1,3 +1,8 @@
+# Measure stuff
+#   https://duncanlew.medium.com/a-better-node-version-manager-volta-vs-nvm-5917c1edd0a1
+# zmodload zsh/zprof
+
+
 # Turn off all beeps
 unsetopt beep
 
@@ -85,11 +90,13 @@ ZSH_THEME="agnoster"
 # source ~/.zsh/fzf-tab/fzf-tab.plugin.zsh
 
 plugins=(
+    aliases
     git
     fzf
     fzf-tab
     z # enables fast cd: z xyz
     zsh-autosuggestions
+    # zsh-nvm
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -172,10 +179,13 @@ export PATH="$PATH:$(go env GOROOT)/bin"
 # export PATH=/opt/homebrew/bin/:$PATH
 # export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
-autoload -U compinit
-compinit -i
+# autoload -U compinit
+# compinit -i
 
 complete -C '/opt/homebrew/bin/aws_completer' aws
+
+# autoload -U +X bashcompinit && bashcompinit
+# source ~/.oh-my-zsh/custom/az.zsh
 
 # https://taskfile.dev/installation/#zsh
 # sudo wget https://raw.githubusercontent.com/go-task/task/main/completion/zsh/_task -O /usr/local/share/zsh/site-functions/_task
@@ -185,19 +195,41 @@ complete -C '/opt/homebrew/bin/aws_completer' aws
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
 # export PATH="/opt/homebrew/opt/go@1.19/bin:$PATH"
 export PATH="/opt/homebrew/opt/go@1.20/bin:$PATH"
+export PATH="/usr/local/share/dotnet:$PATH"
+export PATH="/Library/Frameworks/Mono.framework/Commands/:$PATH"
+export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/Cellar/less/633/bin:$PATH"
+export PATH="/opt/homebrew/Cellar/file-formula/5.45/bin/:$PATH"
 
 
 # You can opt-out of telemetry by setting the FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT environment variable to '1' or 'true' using your favorite shell.
 export FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT=1
 
+# Made TERM work nicer.
+#export TERM="screen-256color"
+
+# Make the history usable.
+setopt histignoredups no_sharehistory
+
+# Set up keychain.
+if (keychain --version 2>/dev/null); then
+	eval $(keychain --eval --agents ssh -Q --quiet --nogui "${HOME}/.ssh/id_ed25519")
+fi
+
 export GPG_TTY=$(tty)
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+# export SDKMAN_DIR="$HOME/.sdkman"
+# [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Why not have both :) 
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# export VOLTA_HOME="$HOME/.volta"
+# export PATH="$VOLTA_HOME/bin:$PATH"
+
+# zprof

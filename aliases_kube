@@ -6,8 +6,8 @@ alias kc="kubectl config use-context"
 alias ksys="kubectl --namespace=kube-system"
 alias kcd="kubectl config use-context"
 alias kcdn='kubectl config set-context --current --namespace '
-alias kls='k config get-contexts -o name | egrep --color=always "$(k config current-context)|^"'
-alias kpwd='k config get-contexts $(k config current-context)'
+alias kls='kubectl config get-contexts -o name | egrep --color=always "$(k config current-context)|^"'
+alias kpwd='kubectl config get-contexts $(k config current-context)'
 alias kall='kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n'
 
 # https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-instances.html#listing-instances
@@ -21,4 +21,8 @@ alias kall='kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1
 alias alist="aws ec2 describe-instances"
 alias glist="gcloud compute instances list"
 
+# azure: az vm list | jq '.[] | (.location + " " + .name)'
 
+
+# View the local config file as json
+# k config view -o json

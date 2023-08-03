@@ -6,7 +6,7 @@ alias glog='git log --color --graph'
 
 alias gd='git diff'
 alias gdd='git diff --cached'
-alias gb='git branch'
+alias gb='git branch -v'
 alias gp='git remote -v'
 alias gf='git show --name-status'
 alias gan='git blame'
@@ -19,14 +19,21 @@ alias glast='git diff HEAD^..HEAD'
 alias glastf='git diff-tree --no-commit-id --name-only -r HEAD'
 
 alias gcd=' git checkout develop'
-alias gcm=' git checkout master'
+alias gcm=' git checkout main'
 alias git_check_merged='git branch -r --merged'
 alias git_prune='git remote prune origin'
+
+# squash last two commits
+alias gsquash='git rebase -i HEAD~2'
+alias gac='git commit --amend'
+
+# un-commit-last-un-pushed-git-commit-without-losing-the-changes
+alias gunc='git reset --soft HEAD~1'
 
 
 alias gpu='git pull --rebase'
 alias gprune='git fetch --all --prune'
-alias grevert_prev='git reset --soft HEAD~1'
+
 alias gin_origin='git fetch && git log ..origin/develop'
 alias gin_upstream='git fetch && git log ..upstream/develop'
 alias gout_origin='git fetch && git log origin/develop..'
@@ -44,8 +51,8 @@ alias ghb='gh tree/$(git symbolic-ref --quiet --short HEAD )'
 # Open current directory/file in current branch
 alias ghbf="gh tree/$(git symbolic-ref --quiet --short HEAD )/$(git rev-parse --show-prefix)"
 
-# Open current directory/file in master branch
-alias ghf='gh tree/master/$(git rev-parse --show-prefix)'
+# Open current directory/file in the main branch
+alias ghf='gh tree/main/$(git rev-parse --show-prefix)'
 
 
 # List commits on all remote branches

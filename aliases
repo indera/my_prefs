@@ -11,6 +11,11 @@ alias cdg='cd ~/git 		&& lss'
 alias cd_os='cd ~/git/open-source && lss'
 alias cd_prefs='cd ~/git/my_prefs && lss'
 
+# replace pipe with tab
+# cat file | tr '|' '\t'
+# awk -F"|" -v OFS="\t" ' $1=$1 ' file
+# sed "s/|/<press tab key>/g" file
+
 # alias vim=/usr/bin/vim
 alias vim='nvim'
 alias watch='watch '
@@ -33,7 +38,7 @@ alias bi='brew install'
 alias re='vim README.md'
 
 # Python
-alias fre='python -m pip list'
+alias fre='python3 -m pip list'
 alias req='vim requirements.txt'
 alias tap='vim tasks.py'
 
@@ -44,10 +49,13 @@ alias ta='vim Taskfile.yml'
 alias ta2='vim .Taskfile.yml'
 
 alias pa='vim package.json'
+alias tscc='vim tsconfig.json'
 alias ma='vim Makefile'
 alias en='vim .env'
 alias dok='vim Dockerfile'
 alias dokk='vim deploy/Dockerfile'
+alias loc='vim local.settings.json'
+
 alias ge='vim Gemfile'
 alias gel='vim Gemfile'
 alias doc='vim docker-compose.yml'
@@ -58,6 +66,7 @@ alias ba='vim ~/.bashrc'
 alias za='vim ~/.zshrc'
 
 alias fin='find . -iname'
+alias mdfin='mdfind -onlyin .'
 alias bigg='du -hcs * | grep -E "M|G"'
 alias big_find='find ./ -size +10000k  | xargs ls -hsS'
 alias big='ls -phsS | head -10'
@@ -75,3 +84,4 @@ alias ste='vim steps.md'
 # go clean -cache
 alias goc='du -hs $(go env GOCACHE)'
 
+alias nls='npx n lsr'

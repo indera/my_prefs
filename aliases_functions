@@ -1,9 +1,16 @@
 
-# yml as json
-# yq config.yml -o=json | head
+# Do: yml as json
+#   cat config.yml | yq -oj
+#
+# Do: extract json keys
+#   cat keys.json | jq -r 'to_entries[] | (.key + ": ")'
 
 # ec2 instances info
 # aws ec2 describe-instances | jq '.Reservations[].Instances[] | "\(.InstanceId) \(.KeyName) \(.Platform) \(.InstanceType) PrivateIP:\(.PrivateIpAddress) \(.State.Name)"' | grep running
+
+function watcha() {
+    watch --color -x zsh -ic $1
+}
 
 function psls() {
     # https://stackoverflow.com/questions/2013547/assigning-default-values-to-shell-variables-with-a-single-command-in-bash 
