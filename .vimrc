@@ -119,6 +119,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'svrana/neosolarized.nvim'
 Plug 'Tsuzat/NeoSolarized.nvim', { 'branch': 'master' }
 
+Plug 'jparise/vim-graphql'
+
 call plug#end()
 
 

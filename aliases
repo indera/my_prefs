@@ -1,7 +1,9 @@
 # =========================
 # --- Essentials ---
-alias rg='rg -in -. --color=always'
+alias rg='rg --color=always'
+alias rga='rg --no-ignore --hidden --color=always' # slow
 alias grep='grep --color=always'
+
 alias ls='ls -hp --color=auto'
 alias lsa='ls -lA'
 alias lss='ls -lAtr'

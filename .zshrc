@@ -179,8 +179,8 @@ export PATH="$PATH:$(go env GOROOT)/bin"
 # export PATH=/opt/homebrew/bin/:$PATH
 # export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
-# autoload -U compinit
-# compinit -i
+autoload -U compinit
+compinit -i
 
 complete -C '/opt/homebrew/bin/aws_completer' aws
 
@@ -202,6 +202,7 @@ export PATH="/Library/Frameworks/Mono.framework/Commands/:$PATH"
 export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/Cellar/less/633/bin:$PATH"
 export PATH="/opt/homebrew/Cellar/file-formula/5.45/bin/:$PATH"
+# export PATH="/opt/homebrew/Cellar/golang-migrate/4.16.2/bin/:$PATH"
 
 
 # You can opt-out of telemetry by setting the FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT environment variable to '1' or 'true' using your favorite shell.

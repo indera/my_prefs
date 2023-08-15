@@ -12,6 +12,14 @@ function watcha() {
     watch --color -x zsh -ic $1
 }
 
+function xml_lint() {
+    # https://stackoverflow.com/questions/16090869/how-to-pretty-print-xml-from-the-command-line
+    # brew install xmlstarlet
+    #
+    # xmlstarlet format --indent-tab
+    xmlstarlet format $1
+}
+
 function psls() {
     # https://stackoverflow.com/questions/2013547/assigning-default-values-to-shell-variables-with-a-single-command-in-bash 
     # FOO="${VARIABLE:-default}"  # If variable not set or null, use default.

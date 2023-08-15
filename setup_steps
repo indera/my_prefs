@@ -14,6 +14,16 @@ brew install tig htop nvim wget
 ## File utils
 brew install colordiff jq yq 
 
+
+# XML
+
+brew install xmlstarlet
+
+wget https://download.gnome.org/sources/libxml2/2.9/libxml2-2.9.9.tar.xz
+tarx xvzf libxml2-2.9.9.tar.xz && cd libxml2-2.9.9
+./configure && make && make install
+
+
 # Window movement
 brew install --cask hammerspoon
 

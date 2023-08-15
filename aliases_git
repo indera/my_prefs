@@ -65,3 +65,9 @@ alias ghf='gh tree/main/$(git rev-parse --show-prefix)'
 function gb_30() {
     git branch -r --format="%(committerdate:iso8601), %(committerdate:relative) - %(refname:short)" | grep -v [H]EAD | awk -v dateA="$(date -d "$(date +%Y-%m-%d) - 3 days" +%Y-%m-%d)" -F '|' 'dateA<=$1" "$2' | awk -F '/' '{ print $NF }'
 }
+
+
+function gitlab() {
+    # show project id 
+    curl -s -XGET --header "PRIVATE-TOKEN: $GITLAB_TOKEN" "https://gitlab.com/api/v4/projects?owned=true" | jq .
+}
