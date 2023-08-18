@@ -1,0 +1,48 @@
+---
+version: "3"
+# WORKDIR creates directories as root instead of USER
+# https://github.com/moby/moby/issues/36677
+#
+# Fixed in BuildKit
+#     https://github.com/tonistiigi
+#     2019 - https://github.com/moby/buildkit/pull/1002/files
+#
+# With BuildKit disabled (DOCKER_BUILDKIT=0), the build fails
+
+tasks:
+  default:
+    desc: "Test stuff possible with taskfile"
+    aliases: [l]
+    cmds:
+      - task --list --sort alphanumeric
+
+  test:workdir:
+    desc: Test docker WORKDIR directive
+    aliases: [r]
+    cmds:
+      - |
+        DOCKER_BUILDKIT=1 docker build --no-cache --progress=plain -<< EOF
+        FROM alpine:latest
+        RUN adduser -S someone
+        USER someone
+        WORKDIR /test
+        RUN ls -ld /test
+        RUN touch file
+        EOF
+
+  create:file:
+    cmds:
+      - task: file
+        vars:
+          FILE: "echo_foobar.txt"
+          CONTENT:
+            sh: "echo 'foo\nbar'"
+
+  file:
+    requires:
+      vars: [FILE, CONTENT]
+    cmds:
+      - |
+        cat << EOF > '{{.FILE}}'
+        {{.CONTENT}}
+        EOF
