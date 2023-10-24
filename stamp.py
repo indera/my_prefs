@@ -4,10 +4,21 @@
 #   ln -s ~/git/my_prefs/stamp.py ~/bin/stamp
 import argparse
 import time
+
 from datetime import datetime
+from dateutil import tz
 
 
 DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
+
+def converToLocalTZ(utc):
+    dt = datetime.strptime(utc, '%Y-%m-%d %H:%M:%S')
+
+    from_zone = tz.tzutc()
+    to_zone = tz.tzlocal()
+
+    dt = dt.replace(tzinfo=from_zone)
+    return dt.astimezone(to_zone)
 
 
 def stamp(val):
@@ -27,6 +38,8 @@ def stamp(val):
     except Exception:
         ts = int(val)/1000
         res = datetime.utcfromtimestamp(ts).strftime(DATE_FORMAT)
+
+    res = f"localized: {converToLocalTZ(res)}"
 
     return res
 

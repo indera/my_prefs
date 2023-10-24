@@ -36,20 +36,28 @@ function dnames_fn {
 }
 
 function dip_fn {
-    echo "IP addresses of all named running containers"
+    # --format '{{range $net,$v := .NetworkSettings.Networks}}{{printf "%s\n" $net}}{{end}}'
+
+    echo "CONTAINER \t IP \t\t NETWORK"
 
     for DOC in `dnames_fn`
     do
-        IP=`docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}} {{end}}' "$DOC"`
-        OUT+=$DOC'\t'$IP'\n'
+        IP=`docker inspect  --format='{{range .NetworkSettings.Networks}}{{.IPAddress}} {{end}}' "$DOC"`
+        NET=`docker inspect --format='{{range $net,$v := .NetworkSettings.Networks}}{{printf "%s\n" $net}}{{end}}' "$DOC"`
+        OUT+="$DOC \t $IP \t\t $NET \n"
     done
-    echo -e $OUT | column -t
+    # echo -e $OUT | column -t
+    echo $OUT
     unset OUT
 }
 
 function dex_fn {
 	docker exec -it $1 ${2:-bash}
 }
+function dexu_fn {
+	docker exec -u root -it $1 ${2:-bash}
+}
+
 
 function din_fn {
 	docker inspect $1
@@ -97,14 +105,17 @@ function d-aws-cli-fn {
            amazon/aws-cli:latest $1 $2 $3
 }
 
+# docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'
 
 alias dco=dc_fn
 alias dex=dex_fn
+alias dexu=dexu_fn
 # alias dps='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}\t{{.Mounts}}" '
-alias dps="docker ps --format 'table {{.ID}}\t \t {{.Names}} \t {{.Status}} \t {{.Ports}}'"
+alias dps="docker ps    --format 'table {{.ID}}\t \t {{.Names}} \t {{.Status}} \t {{.Ports}}'"
 alias dpa="docker ps -a --format 'table {{.ID}}\t \t {{.Names}} \t {{.Status}} \t {{.Ports}}'"
 # alias dpa="docker ps -a"
-alias dps_normal="docker ps --format 'table {{.ID}}\t {{.Image}} \t {{.Names}} \t {{.Status}}'"
+# alias dps_full="docker ps --format 'table {{.ID}}\t {{.Image}} \t {{.Names}} \t {{.Status}}'"
+alias dps_full="docker ps"
 alias dl=dl_fn
 
 alias di="docker images"

@@ -12,11 +12,14 @@ Plug 'dstein64/vim-startuptime'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
 
+" quotes https://superuser.com/questions/782391/vim-enclose-in-quotes
 " Word          ysiw)'      aa      => (aa)
 " line          yss'        aa bb   => 'aa bb'
 Plug 'tpope/vim-surround'
 
 Plug 'preservim/nerdtree'
+
+Plug 'kkvh/vim-docker-tools'
 
 " https://sourcediving.com/better-fuzzy-finding-in-vim-2f1e8597b3b9
 " Plug 'kien/ctrlp.vim'
@@ -88,6 +91,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'numToStr/Comment.nvim'
 
+Plug 'dracula/vim', { 'as': 'dracula' }
+
 " Plug 'Raimondi/delimitMate' - closes ''
 
 "!!!  https://farazdagi.com/posts/2015-01-10-vim-as-golang-ide/
@@ -152,9 +157,17 @@ try
     " colorscheme gruvbox
     " colorscheme molokai
     " colorscheme NeoSolarized
+    " colorscheme drakula
     colorscheme monokai
 
     " https://github.com/numToStr/Comment.nvim
+    " == NORMAL mode
+    " `gcc` - Toggles the current line using linewise comment
+    " `gbc` - Toggles the current line using blockwise comment
+    " `[count]gcc` - Toggles the number of line given as a prefix-count using linewise
+    " `[count]gbc` - Toggles the number of line given as a prefix-count using blockwise
+    " `gc[count]{motion}` - (Op-pending) Toggles the region using linewise comment
+    " `gb[count]{motion}` - (Op-pending) Toggles the region using blockwise comment
     lua require('Comment').setup()
 
     " lua require('neosolarized').setup({
@@ -252,6 +265,22 @@ nnoremap <F7> :set signcolumn=no<CR>
 " https://vi.stackexchange.com/questions/31340/navigate-between-current-and-previous-tab-or-split
 nnoremap <space> <C-w><C-w>k<CR>
 nnoremap <S-space> <C-w><C-p>k<CR>
+
+" Tab navigation like Firefox.
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
+
+" nnoremap H gT
+" nnoremap L gt
+
+" Shortcuts for end and home.
+map <s-right> <end>
+map <s-left> <home>
+
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -425,10 +454,6 @@ nnoremap <Leader>ve :e $MYVIMRC<CR>
 " Reload vimr configuration file
 nnoremap <Leader>vr :source $MYVIMRC<CR>
 
-
-" Shortcuts for end and home.
-map <s-right> <end>
-map <s-left> <home>
 
 " Speling iz gode.
 noremap <leader>sc :setlocal spell! spelllang=en_us<cr>

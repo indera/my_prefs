@@ -1,6 +1,11 @@
+# View the local config file as json
+# k config view -o json
+#
+# kubectl auth can-i get po -A --as=hacker@bad.com
 
 alias k="kubectl "
 alias kx="kubectl --context=x"
+alias kt='kubetail'
 
 alias kc="kubectl config use-context"
 alias ksys="kubectl --namespace=kube-system"
@@ -23,6 +28,35 @@ alias glist="gcloud compute instances list"
 
 # azure: az vm list | jq '.[] | (.location + " " + .name)'
 
+alias k_rest="k get po -A | awk '\$5>0'"
+alias k_fail='k get po -A  --field-selector="status.phase!=Succeeded,status.phase!=Running" '
 
-# View the local config file as json
-# k config view -o json
+function az_vaults() {
+    az keyvault list | jq -r '.[] | "\(.location) - \(.name)"'
+}
+
+function az_ls() {
+    az account list | jq -r '.[] | .name'
+}
+
+function az_pwd() {
+    az account show | jq -r '(.name), (.user.name), (.state)' | paste -sd'|' -
+}
+
+function az_cd() {
+    if [ -z "$1" ]; then
+        echo "No subscription supplied"
+        echo "Valid values: "
+        az_ls
+        return 1
+    fi
+
+    az account set --subscription $1
+    az_pwd
+}
+
+
+function az_clusters() {
+    az aks list | jq -r '.[]|"Cluster: \(.name) Resource-group: \(.resourceGroup) Enabled: \(.enableRbac) "' | column -t
+}
+

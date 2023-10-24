@@ -221,6 +221,9 @@ fi
 
 export GPG_TTY=$(tty)
 
+ssh-add -q ~/.ssh/id_rsa_indera
+ssh-add -q ~/.ssh/id_ed25519
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # export SDKMAN_DIR="$HOME/.sdkman"
 # [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

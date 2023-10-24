@@ -1,8 +1,10 @@
 # =========================
 # --- Essentials ---
-alias rg='rg --color=always'
-alias rga='rg --no-ignore --hidden --color=always' # slow
+alias rg='rg  -i --color=always'
+alias rga='rg -i --color=always --no-ignore --hidden' # slow
 alias grep='grep --color=always'
+alias hist=' history | cut -c 8- | sort | uniq -c | sort -nr | head -20'
+alias jq='jq -C'
 
 alias ls='ls -hp --color=auto'
 alias lsa='ls -lA'
@@ -12,6 +14,12 @@ alias cdd="cd ..    		&& pwd"
 alias cdg='cd ~/git 		&& lss'
 alias cd_os='cd ~/git/open-source && lss'
 alias cd_prefs='cd ~/git/my_prefs && lss'
+
+# regex remove all before first
+# :%s/^[^:]*://gc
+#
+# See https://regex101.com/r/EJbb7v/2 - lookahead & lazy matching
+# \v(^)(.*?):
 
 # replace pipe with tab
 # cat file | tr '|' '\t'
@@ -48,7 +56,7 @@ alias tap='vim tasks.py'
 # https://taskfile.dev/usage/ - brew install go-task
 alias t='task'
 alias ta='vim Taskfile.yml'
-alias ta2='vim .Taskfile.yml'
+alias tt='vim .Taskfile.yml'
 
 alias pa='vim package.json'
 alias tscc='vim tsconfig.json'
@@ -62,6 +70,8 @@ alias ge='vim Gemfile'
 alias gel='vim Gemfile'
 alias doc='vim docker-compose.yml'
 alias gitc='vim ~/.gitconfig'
+# https://github.com/dbcli/pgcli/blob/main/pgcli/pgclirc 
+alias pgclc='vim ~/.config/pgcli/config'
 
 alias vrc='vim ~/.vimrc'
 alias ba='vim ~/.bashrc'
@@ -79,6 +89,7 @@ alias path_ls="echo $PATH | tr ':' '\n'|sort -rn"
 alias ports='sudo lsof -nP -iTCP -sTCP:LISTEN'
 alias proce='top -stats pid,command,cpu,idlew,power -o power -d'
 alias net='sudo bmon'
+alias my_ip='curl ifconfig.me'
 
 alias se='vim ~/git/setup/README.md'
 alias ste='vim steps.md'

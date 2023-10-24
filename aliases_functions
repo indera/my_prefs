@@ -8,6 +8,8 @@
 # ec2 instances info
 # aws ec2 describe-instances | jq '.Reservations[].Instances[] | "\(.InstanceId) \(.KeyName) \(.Platform) \(.InstanceType) PrivateIP:\(.PrivateIpAddress) \(.State.Name)"' | grep running
 
+function urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
+
 function watcha() {
     watch --color -x zsh -ic $1
 }
@@ -30,6 +32,11 @@ function psls() {
     ps -ef | grep -e "$NEEDLE" | grep -v grep
 }
 
+function ps_node() {
+    # pgrep -lf node
+    pgrep -l node
+}
+
 function mongo_local() {
     docker exec -it mongodb bash -c '/usr/bin/mongosh -u admin -p password'
 }
@@ -41,10 +48,15 @@ function mdfind() {
 
 # https://prefetch.net/blog/2020/07/14/decoding-json-web-tokens-jwts-from-the-linux-command-line/
 function jwtd() {
-    if [[ -x $(command -v jq) ]]; then
-         jq -R 'split(".") | .[1] | @base64d | fromjson' <<< "${1}"
-    fi
+    # if [[ -x $(command -v jq) ]]; then
+    jq -R 'split(".") | .[1] | @base64d | fromjson' <<< "${1}"
+    # jq 'split(".") | .[1]' <<< "${1}" | grep -v null  | jq -R '@base64d | fromjson'
 }
+
+function jwtdf() {
+    cat $1 | jq -R 'split(".") | .[1] | @base64d | fromjson'
+}
+
 
 function jwtd_full() {
     if [[ -x $(command -v jq) ]]; then
