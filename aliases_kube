@@ -56,7 +56,28 @@ function az_cd() {
 }
 
 
+function az_groups() {
+    az group list | jq '.[] | .name'
+}
+
+function az_fips() {
+   az aks show \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --query="agentPoolProfiles[].{Name:name enableFips:enableFips}" \
+    -o table
+}
+
 function az_clusters() {
     az aks list | jq -r '.[]|"Cluster: \(.name) Resource-group: \(.resourceGroup) Enabled: \(.enableRbac) "' | column -t
 }
 
+function find_images() {
+    kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec['initContainers', 'containers'][*].image}" \
+        | tr -s '[[:space:]]' '\n' | sort | uniq -c | sort -nr | head
+}
+
+function find_ruby() {
+    kubectl get pods --all-namespaces -o=jsonpath='{range .items[*]}{.metadata.namespace}{"\t"}{.metadata.name}{"\n"}{end}' \
+        | while read namespace pod; do kubectl exec -n $namespace $pod -- which ruby > /dev/null 2>&1; if [ $? -eq 0 ]; then echo "Ruby is installed in $pod in namespace $namespace"; fi; done
+}

@@ -137,3 +137,5 @@ alias drun=drun_fn
 alias dprun="docker system prune --all"
 alias drem=dsr_fn
 
+alias dprune="docker system prune -af && docker volume prune && docker builder prune -af"
+
