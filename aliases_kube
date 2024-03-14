@@ -4,8 +4,10 @@
 # kubectl auth can-i get po -A --as=hacker@bad.com
 
 alias k="kubectl "
-alias kx="kubectl --context=x"
+alias kp="kubectl --context=eastus2-prd-armed-atk-aks-k8s"
+
 alias kt='kubetail'
+alias ktp="kubetail --context eastus2-prd-armed-atk-aks-k8s"
 
 alias kc="kubectl config use-context"
 alias ksys="kubectl --namespace=kube-system"
@@ -14,6 +16,11 @@ alias kcdn='kubectl config set-context --current --namespace '
 alias kls='kubectl config get-contexts -o name | egrep --color=always "$(k config current-context)|^"'
 alias kpwd='kubectl config get-contexts $(k config current-context)'
 alias kall='kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n'
+
+#                  k  -n apollo-router-dev get cm apollo-router-config -o yaml | yq '.data.["configuration.yaml"]'   | yq .limits
+#                  kp -n apollo-router     get cm apollo-router-config -o yaml | yq '.data.["configuration.yaml"]'   | yq .limits
+alias prod_router="kp -n apollo-router     get cm apollo-router-config -o yaml | yq '.data.[\"configuration.yaml\"]' | yq .limits"
+# alias prod_router="kp -n apollo-router     get cm apollo-router-config -o json | jq -r '.data | .[\"configuration.yaml\"]' | sed 's/\\n/\n/g' | yq .limits"
 
 # https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-instances.html#listing-instances
 # 
@@ -61,11 +68,16 @@ function az_groups() {
 }
 
 function az_fips() {
-   az aks show \
-    --resource-group myResourceGroup \
-    --name myAKSCluster \
-    --query="agentPoolProfiles[].{Name:name enableFips:enableFips}" \
-    -o table
+    az aks list | jq '.[] | .agentPoolProfiles[] | ("node: " + .name + ", enableFips: " + (.enableFips|tostring))' | less
+
+    # the cluster
+    # az aks list | gojq '.[] | .name'
+
+   # az aks show \
+   #  --resource-group myResourceGroup \
+   #  --name myAKSCluster \
+   #  --query="agentPoolProfiles[].{Name:name enableFips:enableFips}" \
+   #  -o table
 }
 
 function az_clusters() {

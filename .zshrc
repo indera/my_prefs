@@ -142,7 +142,7 @@ source ~/aliases_functions
 source ~/aliases_git
 source ~/aliases_kube
 
-
+export KUBE_EDITOR=vim
 
 
 # /opt/homebrew/bin/
@@ -159,6 +159,10 @@ export FZF_DEFAULT_OPTS='--height 40%'
 # export PATH=/home/asura/bin:/opt/homebrew/bin/:$PATH
 export PATH="$HOME/bin":$PATH
 
+export ZPLUG_HOME=~/.config/zplug
+# git clone https://github.com/zplug/zplug $ZPLUG_HOME
+source ~/.config/zplug/init.zsh
+
 
 # https://www.programming-books.io/essential/go/gopath-goroot-gobin-d6da4b8481f94757bae43be1fdfa9e73
 # GOROOT - This is the location of your Go installation. It is used to find the standard libraries.
@@ -169,12 +173,31 @@ export PATH="$HOME/bin":$PATH
 # It was set to /Users/andreisura/.local/bin
 # go env -w GOBIN=$(go env GOROOT)/bin
 
+#  https://github.com/go-nv/goenv/blob/master/INSTALL.md
+#
+# brew install zplug
+# source ~/.zshrc
+# zplug install
 
+zplug "RiverGlide/zsh-goenv", from:gitlab
+
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
+
+# export PATH="/opt/homebrew/opt/go@1.19/bin:$PATH"
+# export PATH="/opt/homebrew/opt/go@1.20/bin:$PATH"
+# export PATH="/opt/homebrew/opt/go@1.22/bin:$PATH"
+
+
+# export GOROOT=/opt/homebrew/Cellar/go@1.20/1.20.10/libexec
 # export GOROOT=$(go env GOROOT)
-# export GOBIN=$(go env GOROOT)/bin
+export GOBIN=$(go env GOROOT)/bin
 
-export PATH="$PATH:$(go env GOPATH)/bin"
-export PATH="$PATH:$(go env GOROOT)/bin"
+# export PATH="$PATH:$(go env GOPATH)/bin"
+# export PATH="$PATH:$(go env GOROOT)/bin"
 
 # export PATH=/opt/homebrew/bin/:$PATH
 # export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
@@ -195,8 +218,7 @@ complete -C '/opt/homebrew/bin/aws_completer' aws
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# export PATH="/opt/homebrew/opt/go@1.19/bin:$PATH"
-export PATH="/opt/homebrew/opt/go@1.20/bin:$PATH"
+
 export PATH="/usr/local/share/dotnet:$PATH"
 export PATH="/Library/Frameworks/Mono.framework/Commands/:$PATH"
 export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
