@@ -1,0 +1,289 @@
+" Never forget this
+set mouse=
+
+" https://medium.com/@yanglyu5201/neovim-setup-for-golang-programming-68ebf59336d9
+" store the plugins in plugged dir
+
+call plug#begin('~/.config/nvim/plugged')
+Plug 'dstein64/vim-startuptime'
+
+Plug 'morhetz/gruvbox'
+Plug 'tpope/vim-fugitive'
+
+" Word          ysiw)'      aa      => (aa)
+" line          yss'        aa bb   => 'aa bb'
+Plug 'tpope/vim-surround'
+
+" Plug 'preservim/nerdtree'
+
+" https://sourcediving.com/better-fuzzy-finding-in-vim-2f1e8597b3b9
+" Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf'
+"https://github.com/junegunn/fzf.vim
+" Example
+"   :Rg [PATTERN]   rg search result (ALT-A to select all, ALT-D to deselect all)
+" Plug 'junegunn/fzf.vim'
+
+" plantUML
+Plug 'aklt/plantuml-syntax'
+Plug 'weirongxu/plantuml-previewer.vim'
+Plug 'tyru/open-browser.vim'
+
+
+" https://stackoverflow.com/questions/9212340/is-there-a-vim-plugin-for-previewing-markdown-files
+" let g:instant_markdown_autostart = 0
+Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
+
+" Linting
+" https://medium.com/@jimeno0/eslint-and-prettier-in-vim-neovim-7e45f85cf8f9
+" Plug 'w0rp/ale'
+
+" show diffs inline
+" Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
+
+" Elixir support
+Plug 'elixir-editors/vim-elixir'
+
+
+" golang support
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'vim-test/vim-test'
+
+
+Plug 'editorconfig/editorconfig-vim'
+
+
+" https://github.com/josa42/coc-go
+" :CocInstall coc-go
+
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'mattn/vim-lsp-settings'
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Plug 'prabirshrestha/asyncomplete-gocode.vim'
+
+
+" https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
+" React syntax highlighting and indenting, supports typescript tsx
+"
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+" Plug 'yuezk/vim-js'
+
+Plug 'David-Kunz/jester'
+
+" https://github.com/nvim-treesitter/nvim-treesitter
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" debugger
+Plug 'mfussenegger/nvim-dap'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'numToStr/Comment.nvim'
+
+"!!!  https://farazdagi.com/posts/2015-01-10-vim-as-golang-ide/
+" Plug 'jiangmiao/auto-pairs'
+
+
+" Python https://realpython.com/vim-and-python-a-match-made-in-heaven/
+"Plug 'vim-syntastic/syntastic'
+
+Plug 'nvie/vim-flake8'
+Plug 'davidhalter/jedi-vim'
+
+" Completion plugin - https://github.com/Shougo/ddc.vim
+Plug 'Shougo/ddc.vim'
+Plug 'vim-denops/denops.vim'
+Plug 'vim-denops/denops-helloworld.vim'
+
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+
+" Plug 'Shougo/neosnippet.vim'
+" Plug 'Shougo/neosnippet-snippets'
+
+" https://github.com/neoclide/coc.nvim
+" :CocInstall coc-go coc-json coc-tsserver coc-eslint
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" code to image file
+" Plug 'krivahtoo/silicon.nvim', { 'do': './install.sh' }
+call plug#end()
+
+set nu                          " Line numbers
+set backspace=indent,eol,start  " Makes backspace key more powerful.
+set noswapfile
+set encoding=utf-8
+
+set nowrapscan
+set wrap                        " wrap long lines
+set incsearch
+set hlsearch
+set ignorecase                  " Search case insensitive...
+set smartcase                   " ... but not when search pattern contains upper case characters
+
+set ttyfast
+" set ttyscroll=3               " noop on linux ?
+set lazyredraw                  "Don't redraw while executing macros (good performance config)
+
+" speed up syntax highlighting
+set nocursorcolumn
+set nocursorline
+
+filetype plugin indent on
+
+set mouse-=a
+
+" Apply the indentation of the current line to the next line.
+set autoindent
+set smartindent
+set complete-=i " if your program has lots of system includes and the completion results become polluted you can get rid of i
+set smarttab
+
+set expandtab
+set expandtab " Expand Tabs (pressing Tab inserts spaces)
+set tabstop=4 " Set Tab size
+set shiftwidth=4 " Number of spaces to use for each step of (auto)indent
+set softtabstop=4 " makes the spaces feel like real tabs; one backspace goes back X spaces :)
+set backspace=indent,eol,start
+retab
+set scrolloff=3 " do not let the curser get too close to the edge
+set laststatus=2 " laststatus: show status line? Yes, always!
+" /Users/asura/setup/jessfraz_vimrc
+" python indent
+" autocmd BufNewFile,BufRead *.py setlocal tabstop=2 softtabstop=2 shiftwidth=2 textwidth=80 smarttab expandtab
+autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80 smarttab expandtab
+
+
+" set clipboard+=unnamedplus
+set splitbelow
+set splitright
+set showmatch " Blink back to closing bracket (using % key)
+" How many tenths of a second to blink when matching brackets
+set mat=2
+
+" For regular expressions turn magic on
+set magic
+
+" nmap <F1> :echo<CR>
+" imap <F1> <C-o>:echo<CR>
+
+" Center the screen
+nnoremap <F1> zz
+
+nnoremap <F2> ddkPk<CR>
+nnoremap <F3> ddjPk<CR>
+nnoremap <F6> :set number! <CR>
+" nnoremap <F7> :TlistToggle <CR>
+
+nnoremap <F7> :set signcolumn=no<CR>
+
+" https://vim.fandom.com/wiki/Alternative_tab_navigation
+" https://vi.stackexchange.com/questions/31340/navigate-between-current-and-previous-tab-or-split
+nnoremap <space> <C-w><C-w>k<CR>
+nnoremap <S-space> <C-w><C-p>k<CR>
+
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+inoremap <C-U> <C-G>u<C-U>
+
+
+" Go settings
+au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+autocmd filetype go nnoremap <F4> :w <bar> exec '!go run '.shellescape('%')<CR>
+autocmd filetype go nnoremap <c-c> :w <bar> exec '!go run '.shellescape('%')<CR>
+autocmd filetype go nnoremap <F5> :w <bar> :GoBuild <CR>
+
+" Python
+autocmd filetype python nnoremap <F4> :w <bar> exec '!python3 '.shellescape('%')<CR>
+autocmd filetype python nnoremap <F5> :w <bar> exec '!python3  -m unittest '.shellescape('%')<CR>
+autocmd filetype python nnoremap <F8> :w <bar> exec '!pylint '.shellescape('%')<CR>
+
+" This comes first, because we have mappings that depend on leader
+" With a map leader it's possible to do extra key combinations
+" i.e: <leader>w saves the current file
+let g:mapleader = ","
+
+" Fast saving
+nmap <leader>w :w!<cr>
+nmap <leader>q :q<cr>
+
+" let g:which_key_map.w = 'save'
+
+" ==================== Fugitive ====================
+" nnoremap <leader>ga :Git add %:p<CR><CR>
+" nnoremap <leader>gp :Gpush<CR>
+nnoremap <leader>gs :Git status<CR>
+nnoremap <leader>gb :Git blame<CR>
+
+"==================== NerdTree ====================
+" For toggling
+nmap <C-n> :NERDTreeToggle<CR>
+noremap <Leader>n :NERDTreeToggle<cr>
+noremap <Leader>f :NERDTreeFind<cr>
+
+let NERDTreeShowHidden=1
+
+let NERDTreeIgnore=['\.vim$', '\~$', '\.git$', '.DS_Store']
+
+" Close nerdtree and vim on close file
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+
+
+" ===== Must have restore position (go to last edit location) ===
+function! ResCur()
+  if line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
+
+augroup resCur
+  autocmd!
+  autocmd BufWinEnter * call ResCur()
+augroup END
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Editing mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Remap VIM 0 to first non-blank character
+map 0 ^
+
+" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+func!DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+
+autocmd BufWrite *.py :call DeleteTrailingWS()
+autocmd BufWrite *.go :call DeleteTrailingWS()
+autocmd BufWrite *.vimrc :call DeleteTrailingWS()
+
+
+" disable the recording macro, drives me nuts.
+map q <Nop>
+
+" Search mappings: These will make it so that going to the next one in a
+" search will center on the line it's found in.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Do not show stupid q: window
+map q: :q
+
+" Sometimes this happens and I hate it
+"map :Vs :vs
+"map :Sp :sp
+
+
