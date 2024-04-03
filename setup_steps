@@ -165,3 +165,6 @@ curl -s http://localhost:7080 | grep curl
 >> User-Agent: curl/7.87.0
 
 
+# show golang dependence like tree
+https://github.com/vc60er/deptree
+go mod graph | deptree -d 2 -t -a

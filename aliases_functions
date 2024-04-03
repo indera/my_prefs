@@ -10,6 +10,30 @@
 
 function urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
 
+# https://stackoverflow.com/questions/44521071/how-to-view-full-dependency-tree-for-nested-go-dependencies
+# % go list -f '{{ .Imports }}' github.com/davecheney/profile
+# [io/ioutil log os os/signal path/filepath runtime runtime/pprof]
+# % go list -f '{{ .Deps }}' github.com/davecheney/profile
+# [bufio bytes errors fmt io io/ioutil log math os os/signal path/filepath reflect run
+
+camel() {
+    # perl -pe 's#(_|^)(.)#\u$2#g'
+    gsed 's/_\([a-z]\)/\U\1/g'
+}
+
+camel2() {
+    # https://codereview.stackexchange.com/questions/138228/transform-snake-case-to-camelcase-with-sed 
+    # two steps _a-z -> Az + first uppercase
+    gsed 's/_\([a-z]\)/\U\1/g;s/^./\U&/'
+}
+
+
+
+function snake {
+    perl -pe 's#([A-Z])#_\L$1#g' | perl -pe 's#^_##'
+}
+
+
 function watcha() {
     watch --color -x zsh -ic $1
 }

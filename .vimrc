@@ -12,6 +12,12 @@ Plug 'dstein64/vim-startuptime'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
 
+" crs snake_case
+" crm MixedCase
+" crc camelCase
+" :'<,'>:g/.*/normal crc
+Plug 'tpope/vim-abolish'
+
 " quotes https://superuser.com/questions/782391/vim-enclose-in-quotes
 " Word          ysiw)'      aa      => (aa)
 " line          yss'        aa bb   => 'aa bb'
@@ -116,6 +122,10 @@ Plug 'Shougo/ddc.vim'
 " https://github.com/neoclide/coc.nvim
 " :CocInstall coc-go coc-json coc-tsserver coc-eslint
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" :CocInstall coc-pyright
+" :CocInstall coc-clangd
+Plug 'fannheyward/coc-pyright'
 
 " code to image file
 " Plug 'krivahtoo/silicon.nvim', { 'do': './install.sh' }
