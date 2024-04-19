@@ -20,6 +20,7 @@ alias glastf='git diff-tree --no-commit-id --name-only -r HEAD'
 
 alias gcd=' git checkout develop'
 alias gcm=' git checkout main'
+alias gcma=' git checkout master'
 alias git_check_merged='git branch -r --merged'
 alias git_prune='git remote prune origin'
 

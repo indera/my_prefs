@@ -1,5 +1,7 @@
 # Measure stuff
 #   https://duncanlew.medium.com/a-better-node-version-manager-volta-vs-nvm-5917c1edd0a1
+#   Alternative: 
+#       zsh -l --sourcetrace
 # zmodload zsh/zprof
 
 
@@ -97,6 +99,7 @@ plugins=(
     z # enables fast cd: z xyz
     zsh-autosuggestions
     # zsh-nvm
+    virtualenv
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -161,7 +164,7 @@ export PATH="$HOME/bin":$PATH
 
 export ZPLUG_HOME=~/.config/zplug
 # git clone https://github.com/zplug/zplug $ZPLUG_HOME
-source ~/.config/zplug/init.zsh
+# source ~/.config/zplug/init.zsh
 
 
 # https://www.programming-books.io/essential/go/gopath-goroot-gobin-d6da4b8481f94757bae43be1fdfa9e73
@@ -179,11 +182,11 @@ source ~/.config/zplug/init.zsh
 # source ~/.zshrc
 # zplug install
 
-zplug "RiverGlide/zsh-goenv", from:gitlab
+# zplug "RiverGlide/zsh-goenv", from:gitlab
 
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
-eval "$(goenv init -)"
+# eval "$(goenv init -)"
 export PATH="$GOROOT/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 
@@ -202,8 +205,8 @@ export GOBIN=$(go env GOROOT)/bin
 # export PATH=/opt/homebrew/bin/:$PATH
 # export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
-autoload -U compinit
-compinit -i
+# autoload -U compinit
+# compinit -i
 
 complete -C '/opt/homebrew/bin/aws_completer' aws
 
@@ -259,3 +262,5 @@ export NVM_DIR="$HOME/.nvm"
 # export PATH="$VOLTA_HOME/bin:$PATH"
 
 # zprof
+
+# PATH=~/.console-ninja/.bin:$PATH
