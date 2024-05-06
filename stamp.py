@@ -34,10 +34,10 @@ def stamp(val):
     # may be in milliseconds, try `ts /= 1000` in that case
 
     try:
-        res = datetime.utcfromtimestamp(ts).strftime(DATE_FORMAT)
+        res = datetime.fromtimestamp(ts, tz=None).strftime(DATE_FORMAT)
     except Exception:
         ts = int(val)/1000
-        res = datetime.utcfromtimestamp(ts).strftime(DATE_FORMAT)
+        res = datetime.fromtimestamp(ts, tz=None).strftime(DATE_FORMAT)
 
     res = f"localized: {converToLocalTZ(res)}"
 

@@ -3,6 +3,7 @@
 alias rg='rg  -i --color=always'
 alias rga='rg -i --color=always --no-ignore --hidden' # slow
 alias grep='grep --color=always'
+alias grepc='grep --color=never'
 alias hist=' history | cut -c 8- | sort | uniq -c | sort -nr | head -20'
 alias jq='jq -C'
 
@@ -14,6 +15,11 @@ alias cdd="cd ..    		&& pwd"
 alias cdg='cd ~/git 		&& lss'
 alias cd_os='cd ~/git/open-source && lss'
 alias cd_prefs='cd ~/git/my_prefs && lss'
+
+alias gol='open -na "GoLand.app" --args "$@"'
+alias pc='open -na "PyCharm.app" --args "$@"'
+
+# nc -zv datadog 4317
 
 # regex remove all before first
 # :%s/^[^:]*://gc
@@ -51,6 +57,7 @@ alias re='vim README.md'
 alias fre='python3 -m pip list'
 alias req='vim requirements.txt'
 alias tap='vim tasks.py'
+alias p='poetry'
 
 # Task
 # https://taskfile.dev/usage/ - brew install go-task
@@ -64,11 +71,19 @@ alias ma='vim Makefile'
 alias en='vim .env'
 alias dok='vim Dockerfile'
 alias dokk='vim deploy/Dockerfile'
+
+function doc() {
+    if [ -f docker-compose.yml ]; then
+        vim docker-compose.yml
+    else
+        vim docker-compose.yaml
+    fi
+}
+
 alias loc='vim local.settings.json'
 
 alias ge='vim Gemfile'
 alias gel='vim Gemfile'
-alias doc='vim docker-compose.yml'
 alias gitc='vim ~/.gitconfig'
 # https://github.com/dbcli/pgcli/blob/main/pgcli/pgclirc 
 alias pgclc='vim ~/.config/pgcli/config'
@@ -86,7 +101,7 @@ alias big='ls -phsS | head -10'
 alias path_ls="echo $PATH | tr ':' '\n'|sort -rn"
 
 # https://linuxize.com/post/check-listening-ports-linux/
-alias ports='sudo lsof -nP -iTCP -sTCP:LISTEN'
+alias ports='lsof -nP -iTCP -sTCP:LISTEN'
 alias proce='top -stats pid,command,cpu,idlew,power -o power -d'
 alias net='sudo bmon'
 alias my_ip='curl ifconfig.me'

@@ -298,14 +298,15 @@ inoremap <C-U> <C-G>u<C-U>
 
 " Go settings
 au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
-autocmd filetype go nnoremap <F4> :w <bar> exec '!go run '.shellescape('%')<CR>
 autocmd filetype go nnoremap <c-c> :w <bar> exec '!go run '.shellescape('%')<CR>
-autocmd filetype go nnoremap <F5> :w <bar> :GoBuild <CR>
+autocmd filetype go nnoremap <F4>  :w <bar> exec '!go run '.shellescape('%')<CR>
+autocmd filetype go nnoremap <F5>  :w <bar> :GoBuild <CR>
 
 " Python
-autocmd filetype python nnoremap <F4> :w <bar> exec '!python3 '.shellescape('%')<CR>
-autocmd filetype python nnoremap <F5> :w <bar> exec '!python3  -m unittest '.shellescape('%')<CR>
-autocmd filetype python nnoremap <F8> :w <bar> exec '!pylint '.shellescape('%')<CR>
+autocmd filetype python nnoremap <c-c> :w <bar> exec '!python3 '.shellescape('%')<CR>
+autocmd filetype python nnoremap <F4>  :w <bar> exec '!python3 '.shellescape('%')<CR>
+autocmd filetype python nnoremap <F5>  :w <bar> exec '!python3  -m unittest '.shellescape('%')<CR>
+autocmd filetype python nnoremap <F6>  :w <bar> exec '!pylint '.shellescape('%')<CR>
 
 " This comes first, because we have mappings that depend on leader
 " With a map leader it's possible to do extra key combinations
